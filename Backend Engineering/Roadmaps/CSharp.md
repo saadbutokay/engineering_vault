@@ -38,19 +38,19 @@ This roadmap is divided into phases. Each phase builds on the previous one. We w
 ---
 ## Phase 3: Intermediate `C#` Concepts
 
-3.1 Collections (List, Dictionary, HashSet, Queue, Stack, LinkedList)  
-3.2 Generics (generic classes, methods, constraints)  
-3.3 Iterators and the yield keyword  
-3.4 Delegates (single-cast, multi-cast, Func, Action, Predicate)  
-3.5 Events and event handling  
-3.6 Lambda expressions  
-3.7 LINQ (query syntax, method syntax, deferred execution, common operators)  
-3.8 Extension methods  
-3.9 Exception handling (try, catch, finally, custom exceptions, exception filters)  
-3.10 IDisposable, using statement, and resource management  
-3.11 Tuples and deconstruction  
-3.12 Pattern matching (type patterns, property patterns, switch expressions)  
-3.13 Indexers and operator overloading
+1. [[Collections]]
+2. [[Generics]]
+3. [[Iterators and yield]]
+4. [[Delegates]]
+5. [[Events]]
+6. [[Lambda Expressions]]
+7. [[LINQ]]
+8. [[Extension Methods]]
+9. [[Exception Handling]]
+10. [[IDisposable and the using Statement]]
+11. [[Tuples and Deconstruction]]
+12. [[Pattern Matching]]
+13. [[Indexers and Operator Overloading]]
 
 ---
 ## Phase 4: Advanced `C#` Concepts
