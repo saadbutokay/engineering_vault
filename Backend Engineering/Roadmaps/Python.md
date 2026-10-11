@@ -353,8 +353,6 @@ This roadmap is divided into phases. Each phase builds on the previous one. We w
 
 ### 9.2 File Storage & Processing
 
-text
-
 ```
 □ AWS S3 (or MinIO for local dev)
   - Upload, download, presigned URLs
@@ -367,8 +365,6 @@ text
 ```
 
 ### 9.3 Background Jobs & Scheduling
-
-text
 
 ```
 □ Celery advanced:
@@ -385,8 +381,6 @@ text
 
 ### 9.4 GraphQL (Growing Demand)
 
-text
-
 ```
 □ GraphQL concepts (queries, mutations, subscriptions)
 □ Strawberry (Python GraphQL library for FastAPI)
@@ -397,9 +391,7 @@ text
 □ Error handling
 ```
 
-### 9.5 gRPC with Python ⭐ NEW
-
-text
+### 9.5 gRPC with Python - NEW
 
 ```
 □ What is gRPC and why it matters
@@ -430,8 +422,6 @@ text
 
 ### 9.6 Performance Optimization
 
-text
-
 ```
 □ Profiling Python code (cProfile, line_profiler)
 □ Memory profiling (memory_profiler, tracemalloc)
@@ -451,8 +441,6 @@ text
 
 ### 9.7 AI/ML Integration (Hot Skill 2024–2025)
 
-text
-
 ```
 □ OpenAI API integration
 □ LangChain basics
@@ -465,10 +453,9 @@ text
 □ Cost optimization for AI API calls
 ```
 
-#### 🛠️ Projects:
+#### Projects:
 
 > **Project 18: "AI-Powered Document Q&A System"**
-> 
 > - Upload documents (PDF, DOCX, TXT)
 > - Process & chunk documents
 > - Generate embeddings (OpenAI/local model)
@@ -482,7 +469,6 @@ text
 > - Source citations in answers
 
 > **Project 19: "Job Board Platform" (Full Production)**
-> 
 > - Company & job posting management
 > - Advanced search with Elasticsearch
 > - Resume upload & parsing
@@ -497,8 +483,7 @@ text
 > - API versioning
 > - Rate limiting
 
-> **Project 19b: "Internal Microservice with gRPC"** ⭐ NEW
-> 
+> **Project 19b: "Internal Microservice with gRPC"** - NEW
 > - Build a standalone service (e.g., pricing engine or auth service)
 > - Define .proto schema
 > - Implement gRPC server in Python
@@ -509,7 +494,6 @@ text
 > - Document the service contract (.proto as source of truth)
 
 ---
-
 ## PHASE 10: PROFESSIONAL DEVELOPMENT
 **Time:** Ongoing
 *"Become the developer companies want to hire."*
