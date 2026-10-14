@@ -497,7 +497,68 @@ print(account.get_history())  # ['Deposit: +$500', 'Withdrawal: -$200']
 ```
 
 ---
-## 5. Property Decorators
+## 5. Access Modifiers
+In Python, **access modifiers do not exist as strict keywords** like they do in languages like Java or C++. Instead, Python relies on a community-accepted **naming convention using underscores** to dictate the visibility and accessibility of class attributes and methods.
+
+**Comparison of Python Access Modifiers:**
+
+|Access Level|Syntax Pattern|Intended Scope|Enforced by Interpreter?|
+|---|---|---|---|
+|**Public**|`name`|Accessible from anywhere.|No (Default behavior).|
+|**Protected**|`_name` (Single underscore)|Inside the class and its subclasses.|No (Convention only).|
+|**Private**|`__name` (Double underscore)|Strictly inside the defining class.|**Yes, via Name Mangling**.|
+
+### 1. Public Access Modifier
+By default, **every attribute and method in a Python class is public**. They can be modified and accessed freely from both inside and outside the class.
+
+```python
+class Developer:
+    def __init__(self, name):
+        self.name = name  # Public attribute
+
+dev = Developer("Alice")
+print(dev.name)  # Output: Alice (Accessible directly)
+```
+
+### 2. Protected Access Modifier
+To mark a member as protected, you prefix its name with a **single underscore (`_`)**. This acts as a warning to other developers that the variable is intended for internal use and within subclasses, but Python **will still allow you to access it externally** if you choose to ignore the convention.
+```python
+class Company:
+    def __init__(self):
+        self._project = "Internal Tool"  # Protected attribute
+
+class Team(Company):
+    def show_project(self):
+        print(self._project)  # OK: Accessible in subclass
+
+emp = Team()
+print(emp._project)  # Output: Internal Tool (Works, but highly discouraged)
+```
+
+### 3. Private Access Modifier
+To mark a member as private, you prefix its name with a **double underscore (`__`)**. If you attempt to access a private variable directly from an object outside the class, Python will raise an `AttributeError`.
+```python
+class Account:
+    def __init__(self, pin):
+        self.__pin = pin  # Private attribute
+
+acc = Account(1234)
+# print(acc.__pin)  # Raises AttributeError!
+```
+
+### How Python Enforces Privacy: Name Mangling
+Python doesn't completely lock out private variables; instead, it uses a process called **Name Mangling**. The interpreter internally renames the attribute by adding a leading underscore and the class name to the front: `_ClassName__attributeName`.
+
+You can technically still bypass the restriction using this mangled name:
+```python
+# Accessing private member externally via Name Mangling
+print(acc._Account__pin)  # Output: 1234
+```
+
+**Note on Dunder Methods:** Attributes that both start and end with double underscores (like `__init__` or `__str__`) are called **dunder (double underscore) or special methods**. Name mangling **does not apply** to them, and they are not considered private modifiers.
+
+---
+## 6. Property Decorators
 The **`@property` decorator** in Python is a built-in decorator that allows you to treat class methods like standard instance attributes. It provides an elegant way to implement **getters, setters, and deleters**, allowing you to execute background logic (such as data validation or logging) without breaking your class's public interface. Watch [this](https://youtu.be/HkbQ_NaH0Lc).
 
 ### The Problem
@@ -659,7 +720,7 @@ print(product.is_available)     # False
 ```
 
 ---
-## 6. Inheritance
+## 7. Inheritance
 **Inheritance** in Python is a core Object-Oriented Programming (OOP) feature that allows a child class to adopt the attributes and methods of a parent class. It maximizes code reusability and builds clear, logical hierarchies within a codebase
 
 Inheritance = a class INHERITS attributes and methods from another class.
@@ -911,7 +972,7 @@ print(article.updated_at)    # 2024-01-16
 ```
 
 ---
-## 7. Polymorphism
+## 8. Polymorphism
 **Polymorphism** in Python is a core Object-Oriented Programming (OOP) concept that allows **different types of objects to respond to the same method or function call** in their own unique ways. Derived from the Greek words for _"many forms,"_ it shifts the programming focus away from an object's specific class to its actionable behaviors, making code significantly more flexible, modular, and reusable.
 
 Polymorphism = "many forms"
@@ -1015,7 +1076,7 @@ send_all_notifications(notifications)
 ```
 
 ---
-## 8. Abstraction
+## 9. Abstraction
 **Abstraction in Python** is the process of hiding complex internal implementation details and exposing only the essential features of an object. It reduces code complexity by forcing developers to focus on _what_ an object does rather than _how_ it does it.
 
 Abstraction = define WHAT something does without defining HOW it does it.
@@ -1164,7 +1225,7 @@ print(service.get_user(1))  # Alice
 ```
 
 ---
-## 9. `Magic/Dunder` Methods
+## 10. `Magic/Dunder` Methods
 **Magic methods** (also called **dunder methods** because they start and end with **d**ouble **under**scores) are special built-in Python methods that let you define how custom objects interact with standard syntax, operators, and built-in functions. You rarely call them directly; instead, Python triggers them automatically behind the scenes when you perform specific operations like adding numbers (`+`), fetching container lengths (`len()`), or printing an object.
 Watch [this](https://youtu.be/qqp6QN20CpE). Also [this](https://youtu.be/NwjSP1_WEfE) (BroCode).
 ```python
@@ -1309,7 +1370,7 @@ with APIResponse({"id": 1}, 201) as resp:
 ```
 
 ---
-## 10. Dataclasses
+## 11. Dataclasses
 A **Python dataclass** is a regular class decorated with `@dataclass` from the built-in `dataclasses` module that **automatically generates special boilerplate methods** like `__init__()`, `__repr__()`, and `__eq__()` based on type annotations. Introduced in Python 3.7, it streamlines the creation of classes meant primarily for storing data. Watch [this](https://youtu.be/Gsfsq2epdr8).
 
 Dataclasses = a shortcut for creating classes that mainly HOLD data.
@@ -1429,7 +1490,7 @@ print(request)
 ```
 
 ---
-## 11. `__slots__`
+## 12. `__slots__`
 In Python, **`__slots__`** is a special class-level attribute that optimizes memory usage and speeds up attribute access by preventing the creation of the default instance dictionary (`__dict__`). Watch [this](https://youtu.be/Iwf17zsDAnY).
 
 ```python
@@ -1480,7 +1541,7 @@ print(sys.getsizeof(WithSlots()))  # ~32 bytes (smaller)
 ```
 
 ---
-## 12. Composition vs Inheritance
+## 13. Composition vs Inheritance
 In Python object-oriented programming, **inheritance** models an **"is-a" relationship** where a child class derives directly from a parent class. **Composition** models a **"has-a" relationship** where a class builds complex behavior by referencing instances of other independent classes as attributes.
 
 | Feature               | Inheritance                                     | Composition                                     |
