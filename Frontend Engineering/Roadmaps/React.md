@@ -13,7 +13,6 @@ This roadmap is divided into phases. Each phase builds on the previous one. We w
 ---
 ## Phase 1 - HTML Fundamentals
 
-1. 
 - Document structure and doctype
 - Semantic HTML elements
 - Text content elements
