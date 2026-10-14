@@ -42,3 +42,6 @@ logs/
 
 # Obsidian
 .obsidian/
+
+# Files / Folders
+REACT/
