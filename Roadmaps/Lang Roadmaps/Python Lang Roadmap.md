@@ -1,3 +1,8 @@
+**Python is a high-level, general-purpose programming language** that emphasizes clean, human-readable code. Created by [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum) and first released in 1991, it operates as an interpreted language, meaning code is executed line-by-line rather than needing a separate compilation step. Because it reads similarly to English, Python dramatically cuts down development time and is widely considered the best language for coding beginners.
+
+**Target version:** Python3 3.12 or newer.
+
+---
 ## Phase 0: Environment, Tooling, and Foundations
 
 1. [[0.1 How Programs Run and the Terminal]] - What a program is, interpreter vs compiler, what the terminal and shell are, essential commands on PowerShell (Windows), zsh (macOS), and bash (Linux): print working directory, change directory, list files, make and remove folders, file paths (absolute vs relative).
@@ -38,43 +43,50 @@
 
 ## Phase 2: Built-in Data Structures
 
-1. [[2.1 Lists]] Creation, indexing, slicing, methods, `sort` vs `sorted`, `key=`, list comprehensions, nested lists.
+1. [[2.1 Lists]] - Creation, indexing, slicing, methods, `sort` vs `sorted`, `key=`, list comprehensions, nested lists.
 
-2. [[2.2 Tuples]] Immutability, packing and unpacking, star unpacking, tuples as records, when to prefer tuples over lists.
+2. [[2.2 Tuples]] - Immutability, packing and unpacking, star unpacking, tuples as records, when to prefer tuples over lists.
 
-3. [[2.3 Dictionaries]] Creation, methods, iteration, `get`, `setdefault`, merging with `|`, dict comprehensions, insertion order, hashing basics.
+3. [[2.3 Dictionaries]] - Creation, methods, iteration, `get`, `setdefault`, merging with `|`, dict comprehensions, insertion order, hashing basics.
 
-4. [[2.4 Sets]] Set operations, `frozenset`, set comprehensions, membership-test performance.
+4. [[2.4 Sets]] - Set operations, `frozenset`, set comprehensions, membership-test performance.
 
-5. [[2.5 Copying and Aliasing]] References, shallow copy, deep copy, the common bugs they cause.
+5. [[2.5 Copying and Aliasing]] - References, shallow copy, deep copy, the common bugs they cause.
 
-6. [[2.6 The collections Module]] `defaultdict`, `Counter`, `deque`, `namedtuple`, `ChainMap`.
+6. [[2.6 The collections Module]] - `defaultdict`, `Counter`, `deque`, `namedtuple`, `ChainMap`.
 
-7. [[2.7 Algorithmic Helpers]] `heapq`, `bisect`, Big-O notation, time complexity of built-in operations.
+7. [[2.7 Algorithmic Helpers]] - `heapq`, `bisect`, Big-O notation, time complexity of built-in operations.
 
 ---
 ## Phase 3: Functions
 
-- **3.1 Function basics:** `def`, parameters, return values, returning multiple values, docstrings, `None` as implicit return.
-- **3.2 Arguments:** Positional, keyword, defaults, the mutable default argument pitfall, `*args`, `**kwargs`, positional-only (`/`), keyword-only (`*`), argument unpacking at call sites.
-- **3.3 Scope:** LEGB rule, `global`, `nonlocal`, why to avoid global state.
-- **3.4 First-class functions:** Functions as objects, passing and returning functions, `lambda`, `map`, `filter`, `sorted(key=)`.
-- **3.5 Closures:** Free variables, function factories, state capture, late-binding pitfall.
-- **3.6 Decorators:** Basic decorators, `functools.wraps`, decorators with arguments, stacking decorators.
-- **3.7 The `functools` module:** `partial`, `lru_cache`, `cache`, `reduce`, `singledispatch`, `cached_property`.
-- **3.8 Recursion:** Base case, recursive case, recursion limit, memoization, when to use iteration instead.
+1. [[3.1 Function Basics]] - `def`, parameters, return values, returning multiple values, docstrings, `None` as implicit return.
+
+2. [[3.2 Arguments]] - Positional, keyword, defaults, the mutable default argument pitfall, `*args`, `**kwargs`, positional-only (`/`), keyword-only (`*`), argument unpacking at call sites.
+
+3. [[3.3 Scope]] - LEGB rule, `global`, `nonlocal`, why to avoid global state.
+4. [[3.4 First-Class Functions]] - Functions as objects, passing and returning functions, `lambda`, `map`, `filter`, `sorted(key=)`.
+
+5. [[3.5 Closures]] - Free variables, function factories, state capture, late-binding pitfall.
+
+6. [[3.6 Decorators]] - Basic decorators, `functools.wraps`, decorators with arguments, stacking decorators.
+
+7. [[3.7 The functools Module]] - `partial`, `lru_cache`, `cache`, `reduce`, `singledispatch`, `cached_property`.
+
+8. [[3.8 Recursion]] - Base case, recursive case, recursion limit, memoization, when to use iteration instead.
 
 ---
-
 ## Phase 4: Modules, Packages, and the Import System
 
-- **4.1 Modules:** `import`, `from ... import`, aliasing, `__name__ == "__main__"`, module docstrings.
-- **4.2 Packages:** `__init__.py`, absolute vs relative imports, namespace packages, controlling public API with `__all__`.
-- **4.3 Import mechanics:** `sys.path`, `sys.modules`, import caching, circular imports and how to fix them.
-- **4.4 Third-party packages:** Finding packages on PyPI, installing, pinning versions, lock files, reading package documentation, evaluating package quality.
+1. [[4.1 Modules]] - `import`, `from ... import`, aliasing, `__name__ == "__main__"`, module docstrings.
+
+2. [[4.2 Packages]] - `__init__.py`, absolute vs relative imports, namespace packages, controlling public API with `__all__`.
+
+3. [[4.3 Import Mechanics]] - `sys.path`, `sys.modules`, import caching, circular imports and how to fix them.
+
+4. [[4.4 Third-Party Packages]] - Finding packages on PyPI, installing, pinning versions, lock files, reading package documentation, evaluating package quality.
 
 ---
-
 ## Phase 5: Errors, Files, and Resources
 
 - **5.1 Exceptions:** `try/except/else/finally`, built-in exception hierarchy, `raise`, `raise ... from`, exception chaining, EAFP vs LBYL.
