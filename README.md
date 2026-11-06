@@ -13,7 +13,7 @@ Have fun.
 ## Contents
 All the things that this repo has!
 ### Languages
-1. [[Python Language Roadmap]]
+1. [[Python Lang Roadmap]]
 2. 
 
 ---
