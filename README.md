@@ -12,12 +12,9 @@ Have fun.
 ---
 ## Contents
 All the things that this repo has!
-### Backend Engineering
-1. [[Python]]
-2. [[CSharp|C#]]
-
-### Frontend Engineering
-1. [[React]]
+### Languages
+1. [[Python Language Roadmap]]
+2. 
 
 ---
 # Interesting fact on ReadMe
