@@ -7,19 +7,27 @@
 ---
 ## Phase 0: Environment, Tooling, and Foundations
 
-- **0.1 How the web works:** Clients and servers, URLs and their parts, HTTP request and response structure, methods and their meanings (GET, POST, PUT, PATCH, DELETE), idempotency and safety, status code families, headers, cookies, HTTPS and TLS at a conceptual level, request and response bodies, `curl` and browser developer tools, what a web framework does and why one is used.
-- **0.2 What Django is and how it is organized:** The Model-Template-View pattern and how it maps to MVC, the request lifecycle from socket to response, projects vs apps, what "batteries included" means in practice, WSGI and ASGI introduced, the release cycle, LTS policy, the deprecation policy, and how to read the official documentation and release notes.
-- **0.3 Creating a project:** Installing Django with `uv` and `pip` into a virtual environment, `django-admin startproject`, the generated files and what each one does, `manage.py`, `runserver` and the autoreloader, `startapp`, registering an app, writing a first view and URL, `manage.py check`.
-- **0.4 Editor setup:** Visual Studio Code with the Python and Django template extensions, PyCharm as an alternative, `django-stubs` and `mypy` configuration, debugging a running Django server from the editor, the Django shell, `django-extensions` and `shell_plus`, `django-debug-toolbar` installation.
-- **0.5 Settings and configuration:** Anatomy of `settings.py`, `BASE_DIR`, `SECRET_KEY`, `DEBUG`, `ALLOWED_HOSTS`, `INSTALLED_APPS`, `DATABASES`, `TEMPLATES`, reading configuration from environment variables, `django-environ` or `pydantic-settings`, settings per environment, `DJANGO_SETTINGS_MODULE`, `manage.py diffsettings`, `check --deploy`, why secrets never go into the repository.
-- **0.6 Project layout:** The default layout and its limits, a `config/` package for settings and a `apps/` folder for applications, `AppConfig` and `default_auto_field`, naming apps, splitting an app into modules (`models/`, `views/`, `services/`), `tests/` placement, `templates/` and `static/` placement, `.gitignore` for Django.
-- **0.7 Code style and conventions:** The Django coding style, PEP 8 as applied by `ruff format`, import ordering, naming of models (singular), fields, related names, URL names, and templates, where logic goes in a first pass, `django-upgrade` for modernizing code.
-- **0.8 Git essentials for Django projects:** `init`, `status`, `add`, `commit`, `log`, `diff`, branches, merging, remotes, pushing to GitHub, what to commit (migrations, `pyproject.toml`, lock file) and what to ignore (`db.sqlite3`, `.env`, `staticfiles/`, `media/`, `__pycache__/`), resolving migration conflicts after a merge.
-- **0.9 Quality tools:** `ruff` for linting and formatting with the Django-specific rule set (`DJ`), `mypy` with `django-stubs`, `djlint` for templates, `pre-commit` hooks, `manage.py check`, `makemigrations --check` in CI, a minimal CI pipeline.
-- **0.10 Local development services with Docker Compose:** Why development should use the same database as production, running PostgreSQL and Redis in containers, volumes and ports, environment files, health checks, connecting Django to the containerized database, resetting the development database, Docker on Windows, macOS, and Linux.
+1. [[How the Web Works]] - Clients and servers, URLs and their parts, HTTP request and response structure, methods and their meanings (GET, POST, PUT, PATCH, DELETE), idempotency and safety, status code families, headers, cookies, HTTPS and TLS at a conceptual level, request and response bodies, `curl` and browser developer tools, what a web framework does and why one is used.
+
+2. [[What Django Is and How It Is Organized]] The Model-Template-View pattern and how it maps to MVC, the request lifecycle from socket to response, projects vs apps, what "batteries included" means in practice, WSGI and ASGI introduced, the release cycle, LTS policy, the deprecation policy, and how to read the official documentation and release notes.
+
+3. [[Creating a Project]] - Installing Django with `uv` and `pip` into a virtual environment, `django-admin startproject`, the generated files and what each one does, `manage.py`, `runserver` and the autoreloader, `startapp`, registering an app, writing a first view and URL, `manage.py check`.
+
+4. [[Editor Setup]] - Visual Studio Code with the Python and Django template extensions, PyCharm as an alternative, `django-stubs` and `mypy` configuration, debugging a running Django server from the editor, the Django shell, `django-extensions` and `shell_plus`, `django-debug-toolbar` installation.
+
+5. [[Settings and Configuration]] - Anatomy of `settings.py`, `BASE_DIR`, `SECRET_KEY`, `DEBUG`, `ALLOWED_HOSTS`, `INSTALLED_APPS`, `DATABASES`, `TEMPLATES`, reading configuration from environment variables, `django-environ` or `pydantic-settings`, settings per environment, `DJANGO_SETTINGS_MODULE`, `manage.py diffsettings`, `check --deploy`, why secrets never go into the repository.
+
+6. [[Project Layout]] - The default layout and its limits, a `config/` package for settings and a `apps/` folder for applications, `AppConfig` and `default_auto_field`, naming apps, splitting an app into modules (`models/`, `views/`, `services/`), `tests/` placement, `templates/` and `static/` placement, `.gitignore` for Django.
+
+7. [[Code Style and Conventions]] - The Django coding style, PEP 8 as applied by `ruff format`, import ordering, naming of models (singular), fields, related names, URL names, and templates, where logic goes in a first pass, `django-upgrade` for modernizing code.
+
+8. [[Git Essentials for Django Projects]] - `init`, `status`, `add`, `commit`, `log`, `diff`, branches, merging, remotes, pushing to GitHub, what to commit (migrations, `pyproject.toml`, lock file) and what to ignore (`db.sqlite3`, `.env`, `staticfiles/`, `media/`, `__pycache__/`), resolving migration conflicts after a merge.
+
+9. [[Quality Tools]] - `ruff` for linting and formatting with the Django-specific rule set (`DJ`), `mypy` with `django-stubs`, `djlint` for templates, `pre-commit` hooks, `manage.py check`, `makemigrations --check` in CI, a minimal CI pipeline.
+
+10. [[Local Development Services with Docker Compose]] - Why development should use the same database as production, running PostgreSQL and Redis in containers, volumes and ports, environment files, health checks, connecting Django to the containerized database, resetting the development database, Docker on Windows, macOS, and Linux.
 
 ---
-
 ## Phase 1: Requests, Responses, and Templates
 
 - **1.1 URL routing:** The `urlconf`, `path()` and `re_path()`, path converters, `include()`, app-level `urls.py`, `app_name` and namespaces, `reverse()` and `{% url %}`, never hard-coding URLs, custom path converters, trailing slashes and `APPEND_SLASH`, how Django matches a URL.

@@ -21,7 +21,7 @@ All the things that this repo has!
 1. [[DSA with Python Roadmap]]
 
 ### Frameworks
-1. [[Django Framework Roadmap]]
+1. [[Django Roadmap]]
 
 ---
 # Interesting fact on ReadMe
