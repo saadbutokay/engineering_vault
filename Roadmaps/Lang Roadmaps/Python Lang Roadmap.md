@@ -106,18 +106,25 @@
 ---
 ## Phase 6: Object-Oriented Programming
 
-- **6.1 Classes and objects:** `class`, `__init__`, instance vs class attributes, `self`, methods.
-- **6.2 Method types:** Instance methods, `@classmethod`, `@staticmethod`, `@property`, setters and deleters.
-- **6.3 Dunder methods:** `__repr__`, `__str__`, `__eq__`, `__hash__`, `__lt__`, `__len__`, `__getitem__`, `__iter__`, `__call__`, `__bool__`, operator overloading.
-- **6.4 Inheritance:** Single and multiple inheritance, MRO, `super()`, mixins, method overriding.
-- **6.5 Composition vs inheritance:** Design guidelines, "has-a" vs "is-a", when to use each.
-- **6.6 Abstract classes:** `abc.ABC`, `@abstractmethod`, defining interfaces.
-- **6.7 Dataclasses:** `@dataclass`, `field`, `frozen`, `slots`, `__post_init__`, `kw_only`, ordering.
-- **6.8 Enums:** `Enum`, `IntEnum`, `StrEnum`, `auto`, `Flag`.
-- **6.9 Encapsulation conventions:** `_protected`, `__private` and name mangling, `__slots__`.
+1. [[6.1 Classes and Objects]] - `class`, `__init__`, instance vs class attributes, `self`, methods.
+
+2. [[6.2 Method Types]] - Instance methods, `@classmethod`, `@staticmethod`, `@property`, setters and deleters.
+
+3. [[6.3 Dunder Methods]] - `__repr__`, `__str__`, `__eq__`, `__hash__`, `__lt__`, `__len__`, `__getitem__`, `__iter__`, `__call__`, `__bool__`, operator overloading.
+
+4. [[6.4 Inheritance]] - Single and multiple inheritance, MRO, `super()`, mixins, method overriding.
+
+5. [[6.5 Composition vs Inheritance]] - Design guidelines, "has-a" vs "is-a", when to use each.
+
+6. [[6.6 Abstract Classes]] - `abc.ABC`, `@abstractmethod`, defining interfaces.
+
+7. [[6.7 Dataclasses]] - `@dataclass`, `field`, `frozen`, `slots`, `__post_init__`, `kw_only`, ordering.
+
+8. [[6.8 Enums]] - `Enum`, `IntEnum`, `StrEnum`, `auto`, `Flag`.
+
+9. [[6.9 Encapsulation Conventions]] - `_protected`, `__private` and name mangling, `__slots__`.
 
 ---
-
 ## Phase 7: Iteration and Generators
 
 - **7.1 Iteration protocol:** Iterables vs iterators, `__iter__`, `__next__`, `StopIteration`, how `for` works internally.
