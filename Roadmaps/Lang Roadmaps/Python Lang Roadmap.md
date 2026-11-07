@@ -89,16 +89,21 @@
 ---
 ## Phase 5: Errors, Files, and Resources
 
-- **5.1 Exceptions:** `try/except/else/finally`, built-in exception hierarchy, `raise`, `raise ... from`, exception chaining, EAFP vs LBYL.
-- **5.2 Custom exceptions:** Designing exception hierarchies for applications, `ExceptionGroup`, `except*`, adding notes to exceptions.
-- **5.3 Context managers:** `with` statement, `__enter__` and `__exit__`, `contextlib.contextmanager`, `ExitStack`, `suppress`.
-- **5.4 File handling:** `open()`, modes, encodings, reading and writing text, binary files, buffering, iterating large files.
-- **5.5 `pathlib`, `os`, and the filesystem:** `Path` operations, directory traversal, `os.environ`, `shutil`, `tempfile`.
-- **5.6 Data formats:** `json`, `csv`, `tomllib`, `pickle` and its security risks.
-- **5.7 Logging:** `logging` module, levels, loggers, handlers, formatters, structured logging, why `print` is not used in production.
+1. [[5.1 Exceptions]] - `try/except/else/finally`, built-in exception hierarchy, `raise`, `raise ... from`, exception chaining, EAFP vs LBYL.
+
+2. [[5.2 Custom Exceptions]] - Designing exception hierarchies for applications, `ExceptionGroup`, `except*`, adding notes to exceptions.
+
+3. [[5.3 Context Managers]] - `with` statement, `__enter__` and `__exit__`, `contextlib.contextmanager`, `ExitStack`, `suppress`.
+
+4. [[5.4 File Handling]] - `open()`, modes, encodings, reading and writing text, binary files, buffering, iterating large files.
+
+5. [[5.5 pathlib os and the Filesystem]] `Path` operations, directory traversal, `os.environ`, `shutil`, `tempfile`.
+
+6. [[5.6 Data Formats]] - `json`, `csv`, `tomllib`, `pickle` and its security risks.
+
+7. [[5.7 Logging]] - `logging` module, levels, loggers, handlers, formatters, structured logging, why `print` is not used in production.
 
 ---
-
 ## Phase 6: Object-Oriented Programming
 
 - **6.1 Classes and objects:** `class`, `__init__`, instance vs class attributes, `self`, methods.
