@@ -18,14 +18,21 @@
 ---
 ## Phase 1: Arrays, Strings, and Hashing
 
-- **1.1 Arrays and dynamic arrays:** Contiguous memory and constant-time indexing, how Python lists store references, implementing a dynamic array with a growth factor, amortized append, insertion and deletion costs, in-place vs extra-space algorithms, reversing and rotating, removing duplicates in place, the `array` module and `bytearray`.
-- **1.2 Strings as sequences:** Immutability and the cost of repeated concatenation, `str.join` and building with lists, character frequency, comparison, palindromes, anagrams, `ord` and `chr`, ASCII vs Unicode concerns, parsing numbers by hand, run-length compression, validating formatted input.
-- **1.3 Hash tables:** Hash functions, collisions, chaining vs open addressing, load factor and resizing, implementing a hash map from scratch, how CPython's `dict` and `set` work, the `__hash__` and `__eq__` contract, why mutable keys break, hash randomization, worst-case behavior and hash-flooding attacks.
-- **1.4 Counting and grouping patterns:** Frequency maps with `Counter`, the Two Sum family, grouping with `defaultdict`, anagram groups, first unique element, majority element with Boyer-Moore voting, duplicate detection, canonical-form keys, pigeonhole reasoning.
-- **1.5 Prefix sums and difference arrays:** One-dimensional prefix sums, range-sum queries, subarray sum equals K with a hash map, two-dimensional prefix sums, difference arrays for range updates, prefix XOR and product, running totals in analytics code.
-- **1.6 Two pointers:** Opposite-end pointers, same-direction (fast and slow) pointers, partitioning arrays, merging sorted arrays, Three Sum, container with most water, in-place filtering, when the technique applies (sorted or monotonic data).
-- **1.7 Sliding window:** Fixed-size windows, variable-size windows, windows with a hash map, longest substring without repeats, minimum window substring, at most K distinct elements, shrink conditions, sliding window vs prefix sums.
-- **1.8 Matrices and grids:** Building 2D lists correctly (the `[[0] * n] * m` bug), row-major traversal, direction arrays, spiral traversal, rotating and transposing, searching a sorted matrix, in-bounds checks, grids as implicit graphs previewed.
+1. [[1.1-arrays-and-dynamic-arrays]] - Contiguous memory and constant-time indexing, how Python lists store references, implementing a dynamic array with a growth factor, amortized append, insertion and deletion costs, in-place vs extra-space algorithms, reversing and rotating, removing duplicates in place, the `array` module and `bytearray`.
+
+2. [[1.2-strings-as-sequences]] - Immutability and the cost of repeated concatenation, `str.join` and building with lists, character frequency, comparison, palindromes, anagrams, `ord` and `chr`, ASCII vs Unicode concerns, parsing numbers by hand, run-length compression, validating formatted input.
+
+3. [[1.3-hash-tables]] - Hash functions, collisions, chaining vs open addressing, load factor and resizing, implementing a hash map from scratch, how CPython's `dict` and `set` work, the `__hash__` and `__eq__` contract, why mutable keys break, hash randomization, worst-case behavior and hash-flooding attacks.
+
+4. [[1.4-counting-and-grouping-patterns]] - Frequency maps with `Counter`, the Two Sum family, grouping with `defaultdict`, anagram groups, first unique element, majority element with Boyer-Moore voting, duplicate detection, canonical-form keys, pigeonhole reasoning.
+
+5. [[1.5-prefix-sums-and-difference-arrays]] - One-dimensional prefix sums, range-sum queries, subarray sum equals K with a hash map, two-dimensional prefix sums, difference arrays for range updates, prefix XOR and product, running totals in analytics code.
+
+6. [[1.6-two-pointers]] - Opposite-end pointers, same-direction (fast and slow) pointers, partitioning arrays, merging sorted arrays, Three Sum, container with most water, in-place filtering, when the technique applies (sorted or monotonic data).
+
+7. [[1.7-sliding-window]] - Fixed-size windows, variable-size windows, windows with a hash map, longest substring without repeats, minimum window substring, at most K distinct elements, shrink conditions, sliding window vs prefix sums.
+
+8. [[1.8-matrices-and-grids]] - Building 2D lists correctly (the `[[0] * n] * m` bug), row-major traversal, direction arrays, spiral traversal, rotating and transposing, searching a sorted matrix, in-bounds checks, grids as implicit graphs previewed.
 
 ---
 

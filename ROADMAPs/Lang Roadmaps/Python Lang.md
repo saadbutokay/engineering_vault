@@ -20,7 +20,7 @@
 
 8. [[0.8 Git Essentials]] - `git init`, `status`, `add`, `commit`, `log`, `diff`, branches, merging, remotes, pushing to GitHub, what to commit and what to ignore.
 
-9. [[Quality Tools]] - `ruff` (lint and format), `mypy` basics, `pre-commit` hooks, configuring all three in `pyproject.toml`.
+9. [[0.9 Quality Tools]] - `ruff` (lint and format), `mypy` basics, `pre-commit` hooks, configuring all three in `pyproject.toml`.
 
 ---
 ## Phase 1: Core Fundamentals
