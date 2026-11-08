@@ -30,16 +30,21 @@
 ---
 ## Phase 1: Requests, Responses, and Templates
 
-- **1.1 URL routing:** The `urlconf`, `path()` and `re_path()`, path converters, `include()`, app-level `urls.py`, `app_name` and namespaces, `reverse()` and `{% url %}`, never hard-coding URLs, custom path converters, trailing slashes and `APPEND_SLASH`, how Django matches a URL.
-- **1.2 Function-based views:** The `HttpRequest` object (`method`, `GET`, `POST`, `body`, `headers`, `META`, `user`, `session`), `HttpResponse` and its subclasses, `JsonResponse`, `render`, `redirect`, `get_object_or_404`, `Http404`, `require_http_methods`, returning proper status codes, views as plain functions.
-- **1.3 Class-based views:** The `View` class and `as_view()`, `TemplateView`, `ListView`, `DetailView`, how `dispatch` works, mixins and method resolution order, `get_context_data`, `get_queryset`, deciding between function-based and class-based views, why generic views save code and when they hide too much.
-- **1.4 Templates:** The Django Template Language (variables, tags, filters), template inheritance with `extends` and `block`, `include`, context and context processors, automatic HTML escaping, `url`, `static`, `csrf_token`, custom template tags and filters, template partials (Django 6.0), the Jinja2 backend as an option, why logic stays out of templates.
-- **1.5 Static files and media:** `STATIC_URL`, `STATICFILES_DIRS`, `collectstatic`, the `STORAGES` setting, serving static files in production with WhiteNoise or a web server, user-uploaded media and `MEDIA_ROOT`, why Django does not serve media in production, cache-busting with hashed filenames.
-- **1.6 Middleware:** The middleware chain and its onion model, built-in middleware and why order matters, writing function-based and class-based middleware, short-circuiting a request, exception handling in middleware, `LoginRequiredMiddleware` (Django 5.1), request timing and request ID middleware, async-capable middleware.
-- **1.7 Reading errors and debugging basics:** The debug error page, `404` and `500` handling, custom error templates, reading a Django traceback from the bottom up, common failures (`ImproperlyConfigured`, `TemplateDoesNotExist`, `NoReverseMatch`, `OperationalError`, `DisallowedHost`, `CSRF verification failed`, `InconsistentMigrationHistory`), `print` vs logging vs the debugger, a systematic way to debug a failing request.
+1. [[1.1 URL Routing]] - The `urlconf`, `path()` and `re_path()`, path converters, `include()`, app-level `urls.py`, `app_name` and namespaces, `reverse()` and `{% url %}`, never hard-coding URLs, custom path converters, trailing slashes and `APPEND_SLASH`, how Django matches a URL.
+
+2. [[1.2 Function-Based Views]] - The `HttpRequest` object (`method`, `GET`, `POST`, `body`, `headers`, `META`, `user`, `session`), `HttpResponse` and its subclasses, `JsonResponse`, `render`, `redirect`, `get_object_or_404`, `Http404`, `require_http_methods`, returning proper status codes, views as plain functions.
+
+3. [[1.3 Class-Based Views]] - The `View` class and `as_view()`, `TemplateView`, `ListView`, `DetailView`, how `dispatch` works, mixins and method resolution order, `get_context_data`, `get_queryset`, deciding between function-based and class-based views, why generic views save code and when they hide too much.
+
+4. [[1.4 Templates]] - The Django Template Language (variables, tags, filters), template inheritance with `extends` and `block`, `include`, context and context processors, automatic HTML escaping, `url`, `static`, `csrf_token`, custom template tags and filters, template partials (Django 6.0), the Jinja2 backend as an option, why logic stays out of templates.
+
+5. [[1.5 Static Files and Media]] - `STATIC_URL`, `STATICFILES_DIRS`, `collectstatic`, the `STORAGES` setting, serving static files in production with WhiteNoise or a web server, user-uploaded media and `MEDIA_ROOT`, why Django does not serve media in production, cache-busting with hashed filenames.
+
+6. [[1.6 Middleware]] - The middleware chain and its onion model, built-in middleware and why order matters, writing function-based and class-based middleware, short-circuiting a request, exception handling in middleware, `LoginRequiredMiddleware` (Django 5.1), request timing and request ID middleware, async-capable middleware.
+
+7. [[1.7 Reading Errors and Debugging Basics]] - The debug error page, `404` and `500` handling, custom error templates, reading a Django traceback from the bottom up, common failures (`ImproperlyConfigured`, `TemplateDoesNotExist`, `NoReverseMatch`, `OperationalError`, `DisallowedHost`, `CSRF verification failed`, `InconsistentMigrationHistory`), `print` vs logging vs the debugger, a systematic way to debug a failing request.
 
 ---
-
 ## Phase 2: Models and the ORM
 
 - **2.1 Relational databases and SQL essentials:** Tables, rows, columns, primary and foreign keys, `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `WHERE`, `ORDER BY`, `JOIN` types, `GROUP BY`, indexes and what they cost, normalization, transactions and ACID, SQLite vs PostgreSQL, `psql` basics, reading a query plan with `EXPLAIN`, why a Django developer must know SQL.
