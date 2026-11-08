@@ -23,7 +23,7 @@
 
 8. [[Git Essentials for Django Projects]] - `init`, `status`, `add`, `commit`, `log`, `diff`, branches, merging, remotes, pushing to GitHub, what to commit (migrations, `pyproject.toml`, lock file) and what to ignore (`db.sqlite3`, `.env`, `staticfiles/`, `media/`, `__pycache__/`), resolving migration conflicts after a merge.
 
-9. [[Quality Tools]] - `ruff` for linting and formatting with the Django-specific rule set (`DJ`), `mypy` with `django-stubs`, `djlint` for templates, `pre-commit` hooks, `manage.py check`, `makemigrations --check` in CI, a minimal CI pipeline.
+9. [[Django Quality Tools]] - `ruff` for linting and formatting with the Django-specific rule set (`DJ`), `mypy` with `django-stubs`, `djlint` for templates, `pre-commit` hooks, `manage.py check`, `makemigrations --check` in CI, a minimal CI pipeline.
 
 10. [[Local Development Services with Docker Compose]] - Why development should use the same database as production, running PostgreSQL and Redis in containers, volumes and ports, environment files, health checks, connecting Django to the containerized database, resetting the development database, Docker on Windows, macOS, and Linux.
 
