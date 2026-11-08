@@ -5,22 +5,22 @@
 ---
 ## Phase 0: Environment, Tooling, and Foundations
 
-1. [[0.1 How Programs Run and the Terminal]] - What a program is, interpreter vs compiler, what the terminal and shell are, essential commands on PowerShell (Windows), zsh (macOS), and bash (Linux): print working directory, change directory, list files, make and remove folders, file paths (absolute vs relative).
+1. [[How Programs Run and the Terminal]] - What a program is, interpreter vs compiler, what the terminal and shell are, essential commands on PowerShell (Windows), zsh (macOS), and bash (Linux): print working directory, change directory, list files, make and remove folders, file paths (absolute vs relative).
 
-2. [[0.2 Installing Python]] - Windows (python.org installer, `py` launcher, PATH), macOS (python.org installer, Homebrew), Linux (`apt`, `dnf`, `python3` command), verifying the install, installing `uv`, managing multiple Python versions.
+2. [[Installing Python]] - Windows (python.org installer, `py` launcher, PATH), macOS (python.org installer, Homebrew), Linux (`apt`, `dnf`, `python3` command), verifying the install, installing `uv`, managing multiple Python versions.
 
-3. [[0.3 Running Python Code]] - The REPL, running a `.py` file, `python -m`, command-line arguments, exiting, difference between `python` and `python3`.
+3. [[Running Python Code]] - The REPL, running a `.py` file, `python -m`, command-line arguments, exiting, difference between `python` and `python3`.
 
-4. [[0.4 Code Editor Setup]] - Visual Studio Code, the Python extension, selecting an interpreter, running and debugging from the editor, integrated terminal.
-5. [[0.5 Virtual Environments and Packages]] - Why isolation matters, `venv`, activation on each OS, `pip install`, `pip freeze`, `requirements.txt`, `uv venv` and `uv pip`.
+4. [[Code Editor Setup]] - Visual Studio Code, the Python extension, selecting an interpreter, running and debugging from the editor, integrated terminal.
+5. [[Virtual Environments and Packages]] - Why isolation matters, `venv`, activation on each OS, `pip install`, `pip freeze`, `requirements.txt`, `uv venv` and `uv pip`.
 
-6. [[0.6 Project Layout and Configuration]] - `src/` layout, `tests/` folder, `pyproject.toml` basics, `.gitignore`, `.env` files and why secrets never go into code.
+6. [[Project Layout and Configuration]] - `src/` layout, `tests/` folder, `pyproject.toml` basics, `.gitignore`, `.env` files and why secrets never go into code.
 
-7. [[0.7 Code Style]] - PEP 8, PEP 20 (Zen of Python), naming conventions, line length, docstring styles (Google and NumPy).
+7. [[Code Style]] - PEP 8, PEP 20 (Zen of Python), naming conventions, line length, docstring styles (Google and NumPy).
 
-8. [[0.8 Git Essentials]] - `git init`, `status`, `add`, `commit`, `log`, `diff`, branches, merging, remotes, pushing to GitHub, what to commit and what to ignore.
+8. [[Git Essentials]] - `git init`, `status`, `add`, `commit`, `log`, `diff`, branches, merging, remotes, pushing to GitHub, what to commit and what to ignore.
 
-9. [[0.9 Quality Tools]] - `ruff` (lint and format), `mypy` basics, `pre-commit` hooks, configuring all three in `pyproject.toml`.
+9. [[Quality Tools]] - `ruff` (lint and format), `mypy` basics, `pre-commit` hooks, configuring all three in `pyproject.toml`.
 
 ---
 ## Phase 1: Core Fundamentals
