@@ -25,22 +25,21 @@
 ---
 ## Phase 1: Core Fundamentals
 
-1. [[1.1 Syntax and Execution Model]] - Indentation, comments, statements vs expressions, line continuation, how Python runs code (source, bytecode, interpreter).
+1. [[Syntax and Execution Model]] - Indentation, comments, statements vs expressions, line continuation, how Python runs code (source, bytecode, interpreter).
 
-2. [[1.2 Variables and Objects]] - Names vs objects, assignment, dynamic typing, `id()`, `type()`, mutability vs immutability, `is` vs `==`, `None`, naming rules.
+2. [[Variables and Objects]] - Names vs objects, assignment, dynamic typing, `id()`, `type()`, mutability vs immutability, `is` vs `==`, `None`, naming rules.
 
-3. [[1.3 Numbers and Booleans]] - `int`, `float`, `bool`, `complex`, `Decimal`, `Fraction`, floating-point pitfalls, arithmetic operators, comparison, logical operators, bitwise operators, truthiness and falsiness, `math` module basics.
+3. [[Numbers and Booleans]] - `int`, `float`, `bool`, `complex`, `Decimal`, `Fraction`, floating-point pitfalls, arithmetic operators, comparison, logical operators, bitwise operators, truthiness and falsiness, `math` module basics.
 
-4. [[1.4 Strings]] - Indexing, slicing, immutability, common methods, f-strings, `format()`, escape sequences, raw strings, multiline strings, Unicode, `bytes` vs `str`, encoding and decoding.
+4. [[Strings]] - Indexing, slicing, immutability, common methods, f-strings, `format()`, escape sequences, raw strings, multiline strings, Unicode, `bytes` vs `str`, encoding and decoding.
 
-5. [[1.5 Input and Output]] - `print()` parameters, `input()`, type conversion, formatted output, reading from standard input.
+5. [[Input and Output]] - `print()` parameters, `input()`, type conversion, formatted output, reading from standard input.
 
-6. [[1.6 Control Flow]] - `if/elif/else`, conditional expressions, `match/case`, `while`, `for`, `range`, `break`, `continue`, loop `else`, walrus operator `:=`.
+6. [[Control Flow]] - `if/elif/else`, conditional expressions, `match/case`, `while`, `for`, `range`, `break`, `continue`, loop `else`, walrus operator `:=`.
 
-7. [[1.7 Reading Errors]] - Anatomy of a traceback, `SyntaxError`, `NameError`, `TypeError`, `ValueError`, `IndexError`, `KeyError`, a systematic way to debug a failing script.
+7. [[Reading Errors]] - Anatomy of a traceback, `SyntaxError`, `NameError`, `TypeError`, `ValueError`, `IndexError`, `KeyError`, a systematic way to debug a failing script.
 
 ---
-
 ## Phase 2: Built-in Data Structures
 
 1. [[2.1 Lists]] - Creation, indexing, slicing, methods, `sort` vs `sorted`, `key=`, list comprehensions, nested lists.
