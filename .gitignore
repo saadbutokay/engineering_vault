@@ -44,3 +44,6 @@ logs/
 .obsidian/
 
 # Files
+LANGUAGES/Python/Phase 00
+FRAMEWORKS/Django/Phase 01
+DSA/With Python/Phase 00

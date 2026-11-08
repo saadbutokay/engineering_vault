@@ -13,15 +13,15 @@ Have fun.
 ## Contents
 All the things that this repo has!
 ### Languages
-1. [[Python Lang Roadmap]]
-2. [[Go Lang Roadmap]]
-3. [[C++ Lang Roadmap]]
+1. [[Python Lang]]
+2. [[Go Lang]]
+3. [[C++ Lang]]
 
 ### Data Structures & Algorithms
-1. [[DSA with Python Roadmap]]
+1. [[DSA with Python]]
 
 ### Frameworks
-1. [[Django Roadmap]]
+1. [[Django]]
 
 ---
 # Interesting fact on ReadMe
