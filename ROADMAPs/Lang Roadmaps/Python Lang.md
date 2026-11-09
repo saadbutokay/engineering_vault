@@ -42,19 +42,19 @@
 ---
 ## Phase 2: Built-in Data Structures
 
-1. [[2.1 Lists]] - Creation, indexing, slicing, methods, `sort` vs `sorted`, `key=`, list comprehensions, nested lists.
+1. [[Lists]] - Creation, indexing, slicing, methods, `sort` vs `sorted`, `key=`, list comprehensions, nested lists.
 
-2. [[2.2 Tuples]] - Immutability, packing and unpacking, star unpacking, tuples as records, when to prefer tuples over lists.
+2. [[Tuples]] - Immutability, packing and unpacking, star unpacking, tuples as records, when to prefer tuples over lists.
 
-3. [[2.3 Dictionaries]] - Creation, methods, iteration, `get`, `setdefault`, merging with `|`, dict comprehensions, insertion order, hashing basics.
+3. [[Dictionaries]] - Creation, methods, iteration, `get`, `setdefault`, merging with `|`, dict comprehensions, insertion order, hashing basics.
 
-4. [[2.4 Sets]] - Set operations, `frozenset`, set comprehensions, membership-test performance.
+4. [[Sets]] - Set operations, `frozenset`, set comprehensions, membership-test performance.
 
-5. [[2.5 Copying and Aliasing]] - References, shallow copy, deep copy, the common bugs they cause.
+5. [[Copying and Aliasing]] - References, shallow copy, deep copy, the common bugs they cause.
 
-6. [[2.6 The collections Module]] - `defaultdict`, `Counter`, `deque`, `namedtuple`, `ChainMap`.
+6. [[The collections Module]] - `defaultdict`, `Counter`, `deque`, `namedtuple`, `ChainMap`.
 
-7. [[2.7 Algorithmic Helpers]] - `heapq`, `bisect`, Big-O notation, time complexity of built-in operations.
+7. [[Algorithmic Helpers]] - `heapq`, `bisect`, Big-O notation, time complexity of built-in operations.
 
 ---
 ## Phase 3: Functions
