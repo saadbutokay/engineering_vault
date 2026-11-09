@@ -37,19 +37,23 @@
 8. [[Matrices and Grids]] - Building 2D lists correctly (the `[[0] * n] * m` bug), row-major traversal, direction arrays, spiral traversal, rotating and transposing, searching a sorted matrix, in-bounds checks, grids as implicit graphs previewed.
 
 ---
-
 ## Phase 2: Recursion, Sorting, and Searching
 
-- **2.1 Recursion and the call stack:** Thinking recursively, base case and recursive case, the call stack and stack frames, recursion trees, deriving complexity from recurrences, the Master theorem, the recursion limit in Python, converting recursion to iteration with an explicit stack, memoization introduced.
-- **2.2 Elementary sorting:** Bubble, selection, and insertion sort, stability, in-place sorting, adaptive behavior, why insertion sort still matters for small inputs, counting comparisons and swaps.
-- **2.3 Efficient sorting:** Merge sort, quicksort (Lomuto and Hoare partitioning, pivot strategies, randomized pivots, worst case), heap sort previewed, the `n log n` lower bound for comparison sorts, how Timsort works and why Python's `sorted` is stable and adaptive, sorting with `key=` and `cmp_to_key`.
-- **2.4 Non-comparison sorting:** Counting sort, radix sort, bucket sort, when they beat `n log n`, memory trade-offs, sorting integers, strings, and fixed-width keys.
-- **2.5 Binary search:** The classic form and its off-by-one traps, lower and upper bound, searching rotated and bitonic arrays, binary search on the answer space, floating-point binary search, the `bisect` module and its `key` parameter, searching sorted logs by timestamp.
-- **2.6 Selection and order statistics:** Partitioning, quickselect and its expected complexity, median of medians overview, kth largest with a heap vs quickselect, `heapq.nlargest` and `nsmallest`, finding medians and percentiles.
-- **2.7 Intervals and sweep line:** Merging intervals, inserting an interval, overlap detection, meeting rooms and minimum rooms, event-based sweep line, calendar booking, interval scheduling.
+1. [[Recursion and the Call Stack]] - Thinking recursively, base case and recursive case, the call stack and stack frames, recursion trees, deriving complexity from recurrences, the Master theorem, the recursion limit in Python, converting recursion to iteration with an explicit stack, memoization introduced.
+
+2. [[Elementary Sorting]] - Bubble, selection, and insertion sort, stability, in-place sorting, adaptive behavior, why insertion sort still matters for small inputs, counting comparisons and swaps.
+
+3. [[Efficient Sorting]] - Merge sort, quicksort (Lomuto and Hoare partitioning, pivot strategies, randomized pivots, worst case), heap sort previewed, the `n log n` lower bound for comparison sorts, how Timsort works and why Python's `sorted` is stable and adaptive, sorting with `key=` and `cmp_to_key`.
+
+4. [[Non-Comparison Sorting]] - Counting sort, radix sort, bucket sort, when they beat `n log n`, memory trade-offs, sorting integers, strings, and fixed-width keys.
+
+5. [[Binary Search]] - The classic form and its off-by-one traps, lower and upper bound, searching rotated and bitonic arrays, binary search on the answer space, floating-point binary search, the `bisect` module and its `key` parameter, searching sorted logs by timestamp.
+
+6. [[Selection and Order Statistics]] - Partitioning, quickselect and its expected complexity, median of medians overview, kth largest with a heap vs quickselect, `heapq.nlargest` and `nsmallest`, finding medians and percentiles.
+
+7. [[Intervals and Sweep Line]] - Merging intervals, inserting an interval, overlap detection, meeting rooms and minimum rooms, event-based sweep line, calendar booking, interval scheduling.
 
 ---
-
 ## Phase 3: Linear Data Structures
 
 - **3.1 Linked lists:** Singly and doubly linked lists, nodes with classes and `__slots__`, sentinel nodes, insertion, deletion, and reversal, fast and slow pointers, Floyd's cycle detection, finding the middle, merging sorted lists, why linked lists are rarely the right choice in Python, when they still are.
