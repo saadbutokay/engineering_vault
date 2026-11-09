@@ -47,39 +47,44 @@
 ---
 ## Phase 2: Models and the ORM
 
-1. [[2.1 Relational Databases and SQL Essentials]] - Tables, rows, columns, primary and foreign keys, `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `WHERE`, `ORDER BY`, `JOIN` types, `GROUP BY`, indexes and what they cost, normalization, transactions and ACID, SQLite vs PostgreSQL, `psql` basics, reading a query plan with `EXPLAIN`, why a Django developer must know SQL.
+1. [[Relational Databases and SQL Essentials]] - Tables, rows, columns, primary and foreign keys, `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `WHERE`, `ORDER BY`, `JOIN` types, `GROUP BY`, indexes and what they cost, normalization, transactions and ACID, SQLite vs PostgreSQL, `psql` basics, reading a query plan with `EXPLAIN`, why a Django developer must know SQL.
 
-2. [[2.2 Models and Fields]] - Defining a model, field types and their options (`null` vs `blank`, `default`, `db_default` in Django 5.0, `unique`, `choices`), `TextChoices` and `IntegerChoices`, `Meta` options, `__str__`, `GeneratedField` (Django 5.0), primary keys and `BigAutoField`, UUID primary keys, how models map to tables, `inspectdb`.
+2. [[Models and Fields]] - Defining a model, field types and their options (`null` vs `blank`, `default`, `db_default` in Django 5.0, `unique`, `choices`), `TextChoices` and `IntegerChoices`, `Meta` options, `__str__`, `GeneratedField` (Django 5.0), primary keys and `BigAutoField`, UUID primary keys, how models map to tables, `inspectdb`.
 
-3. [[2.3 Migrations]] - `makemigrations`, `migrate`, `sqlmigrate`, `showmigrations`, the migration graph and dependencies, reading a migration file, `RunPython` and `RunSQL` for data migrations, reversible migrations, squashing, merge migrations, why migration files are committed, never editing an applied migration.
+3. [[Migrations]] - `makemigrations`, `migrate`, `sqlmigrate`, `showmigrations`, the migration graph and dependencies, reading a migration file, `RunPython` and `RunSQL` for data migrations, reversible migrations, squashing, merge migrations, why migration files are committed, never editing an applied migration.
 
-4. [[2.4 QuerySet Basics]] - Creating, retrieving, updating, and deleting objects, `all`, `get`, `filter`, `exclude`, `order_by`, slicing and `LIMIT`, lazy evaluation and when SQL runs, the result cache, `exists`, `count`, `first`, `bulk_create`, `bulk_update`, `update`, `delete`, `get_or_create`, `update_or_create`, `DoesNotExist` and `MultipleObjectsReturned`.
+4. [[QuerySet Basics]] - Creating, retrieving, updating, and deleting objects, `all`, `get`, `filter`, `exclude`, `order_by`, slicing and `LIMIT`, lazy evaluation and when SQL runs, the result cache, `exists`, `count`, `first`, `bulk_create`, `bulk_update`, `update`, `delete`, `get_or_create`, `update_or_create`, `DoesNotExist` and `MultipleObjectsReturned`.
 
-5. [[2.5 Lookups, Q, F, and Expressions]] - Field lookups (`exact`, `icontains`, `in`, `gt`, `range`, `isnull`, `startswith`), traversing relations with double underscores, `Q` objects for OR and NOT, `F` expressions for database-side arithmetic and race-free updates, `Value`, `Func`, `Case` and `When`, database functions, `Coalesce`, `Lower`, `Concat`, `Cast`.
+5. [[Lookups, Q, F, and Expressions]] - Field lookups (`exact`, `icontains`, `in`, `gt`, `range`, `isnull`, `startswith`), traversing relations with double underscores, `Q` objects for OR and NOT, `F` expressions for database-side arithmetic and race-free updates, `Value`, `Func`, `Case` and `When`, database functions, `Coalesce`, `Lower`, `Concat`, `Cast`.
 
-6. [[2.6 Relationships]] - `ForeignKey`, `OneToOneField`, `ManyToManyField` and explicit `through` models, `on_delete` options and their consequences, `related_name`, forward and reverse access, self-referencing relations, relations across apps with string references, generic relations (overview), composite primary keys (Django 5.2).
+6. [[Relationships]] - `ForeignKey`, `OneToOneField`, `ManyToManyField` and explicit `through` models, `on_delete` options and their consequences, `related_name`, forward and reverse access, self-referencing relations, relations across apps with string references, generic relations (overview), composite primary keys (Django 5.2).
 
-7. [[2.7 The N+1 Problem and Query Optimization]] - How lazy relation access causes N+1 queries, `select_related` and `prefetch_related`, `Prefetch` objects, `only`, `defer`, `values`, `values_list`, `iterator`, counting queries with `connection.queries`, `django-debug-toolbar`, and `assertNumQueries`, `QuerySet.explain()`, finding accidental quadratic behavior in templates and serializers.
+7. [[The N+1 Problem and Query Optimization]] - How lazy relation access causes N+1 queries, `select_related` and `prefetch_related`, `Prefetch` objects, `only`, `defer`, `values`, `values_list`, `iterator`, counting queries with `connection.queries`, `django-debug-toolbar`, and `assertNumQueries`, `QuerySet.explain()`, finding accidental quadratic behavior in templates and serializers.
 
-8. [[2.8 Aggregation, Annotation, and Subqueries]] - `aggregate` vs `annotate`, `Count`, `Sum`, `Avg`, `Min`, `Max`, grouping with `values().annotate()`, filtered aggregates, `Subquery`, `OuterRef`, `Exists`, window functions, `alias`, avoiding Python-side aggregation, the join multiplication pitfall with `Count`.
+8. [[Aggregation, Annotation, and Subqueries]] - `aggregate` vs `annotate`, `Count`, `Sum`, `Avg`, `Min`, `Max`, grouping with `values().annotate()`, filtered aggregates, `Subquery`, `OuterRef`, `Exists`, window functions, `alias`, avoiding Python-side aggregation, the join multiplication pitfall with `Count`.
 
-- **2.9 Transactions and concurrency:** Autocommit behavior, `transaction.atomic` as decorator and context manager, `ATOMIC_REQUESTS` and its trade-offs, savepoints, `transaction.on_commit`, `select_for_update` and row locking, lost updates and race conditions, `F` expressions as the first defense, optimistic locking with a version field, `unique` constraints as idempotency guards, isolation levels overview.
-- **2.10 Constraints, indexes, and schema design:** `CheckConstraint`, `UniqueConstraint` with conditions and expressions, `Meta.indexes`, composite and partial indexes, covering indexes, deciding what to index, soft delete and its costs, `JSONField` and when it is the wrong choice, database-level defaults, PostgreSQL-specific fields (`ArrayField`, `HStoreField`, range fields), schema design for evolution.
-- **2.11 Managers, custom QuerySets, and model design:** Default and custom managers, `QuerySet` subclasses with chainable methods, `as_manager`, model methods and properties, `clean`, `full_clean`, and why `save` does not call them, abstract base classes, proxy models, multi-table inheritance and its costs, where business logic belongs (fat models vs service layer introduced), raw SQL with `raw()` and `connection.cursor()` and when it is justified.
-- **2.12 Database connections, multiple databases, and pooling:** The `DATABASES` setting, `CONN_MAX_AGE` and persistent connections, native connection pooling for PostgreSQL (Django 5.1), database routers and read replicas, `using()`, replication lag pitfalls, the test database, PgBouncer overview, `psycopg` 3, connection limits in production.
+9. [[Transactions and Concurrency]] - Autocommit behavior, `transaction.atomic` as decorator and context manager, `ATOMIC_REQUESTS` and its trade-offs, savepoints, `transaction.on_commit`, `select_for_update` and row locking, lost updates and race conditions, `F` expressions as the first defense, optimistic locking with a version field, `unique` constraints as idempotency guards, isolation levels overview.
+
+10. [[Constraints, Indexes, and Schema Design]] - `CheckConstraint`, `UniqueConstraint` with conditions and expressions, `Meta.indexes`, composite and partial indexes, covering indexes, deciding what to index, soft delete and its costs, `JSONField` and when it is the wrong choice, database-level defaults, PostgreSQL-specific fields (`ArrayField`, `HStoreField`, range fields), schema design for evolution.
+
+11. [[Managers, Custom QuerySets, and Model Design]] - Default and custom managers, `QuerySet` subclasses with chainable methods, `as_manager`, model methods and properties, `clean`, `full_clean`, and why `save` does not call them, abstract base classes, proxy models, multi-table inheritance and its costs, where business logic belongs (fat models vs service layer introduced), raw SQL with `raw()` and `connection.cursor()` and when it is justified.
+
+12. [[Database Connections, Multiple Databases, and Pooling]] - The `DATABASES` setting, `CONN_MAX_AGE` and persistent connections, native connection pooling for PostgreSQL (Django 5.1), database routers and read replicas, `using()`, replication lag pitfalls, the test database, PgBouncer overview, `psycopg` 3, connection limits in production.
 
 ---
-
 ## Phase 3: Forms and Validation
 
-- **3.1 Forms:** The `Form` class, field types and widgets, `is_valid`, `cleaned_data` and `errors`, bound vs unbound forms, `clean_<field>` and `clean`, rendering forms and field groups (Django 5.0), customizing widgets and templates, CSRF protection in forms, `initial` and `prefix`.
-- **3.2 `ModelForm` and formsets:** `ModelForm`, `Meta.fields` and why `"__all__"` is a security risk, `save(commit=False)`, model and form validation order, formsets and inline formsets, managing child objects, `ModelChoiceField` and its query cost.
-- **3.3 File uploads:** `FileField` and `ImageField`, `request.FILES`, upload handlers and size limits, validating file type by content and not by extension, generated filenames and path traversal, storage backends, `django-storages` with S3, serving private files, security of user uploads.
-- **3.4 Form handling patterns:** The Post/Redirect/Get pattern, `CreateView`, `UpdateView`, `DeleteView`, `FormView`, handling form errors, pagination with `Paginator`, search and filter forms with GET, HTMX for partial page updates, progressive enhancement, when a form should be an API instead.
-- **3.5 Validation architecture:** Validators on fields, form validation vs model validation vs database constraints, three layers of defense and what each one is for, `ValidationError` with codes and params, cross-field validation, business rules that belong in services, returning validation errors from APIs, consistent error messages.
+1. [[Forms]] - The `Form` class, field types and widgets, `is_valid`, `cleaned_data` and `errors`, bound vs unbound forms, `clean_<field>` and `clean`, rendering forms and field groups (Django 5.0), customizing widgets and templates, CSRF protection in forms, `initial` and `prefix`.
+
+2. [[ModelForm and Formsets]] - `ModelForm`, `Meta.fields` and why `"__all__"` is a security risk, `save(commit=False)`, model and form validation order, formsets and inline formsets, managing child objects, `ModelChoiceField` and its query cost.
+
+3. [[File Uploads]] - `FileField` and `ImageField`, `request.FILES`, upload handlers and size limits, validating file type by content and not by extension, generated filenames and path traversal, storage backends, `django-storages` with S3, serving private files, security of user uploads.
+
+4. [[Form Handling Patterns]] - The Post/Redirect/Get pattern, `CreateView`, `UpdateView`, `DeleteView`, `FormView`, handling form errors, pagination with `Paginator`, search and filter forms with GET, HTMX for partial page updates, progressive enhancement, when a form should be an API instead.
+
+5. [[Validation Architecture]] - Validators on fields, form validation vs model validation vs database constraints, three layers of defense and what each one is for, `ValidationError` with codes and params, cross-field validation, business rules that belong in services, returning validation errors from APIs, consistent error messages.
 
 ---
-
 ## Phase 4: Authentication, Authorization, and Sessions
 
 - **4.1 Sessions and cookies:** How sessions work, session backends (database, cache, signed cookies), `request.session`, session expiry and `SESSION_COOKIE_*` settings, `HttpOnly`, `Secure`, and `SameSite`, session fixation, why `pickle`-based session serialization is gone, logging out everywhere.
