@@ -78,13 +78,13 @@
 ---
 ## Phase 4: Modules, Packages, and the Import System
 
-1. [[4.1 Modules]] - `import`, `from ... import`, aliasing, `__name__ == "__main__"`, module docstrings.
+1. [[Modules]] - `import`, `from ... import`, aliasing, `__name__ == "__main__"`, module docstrings.
 
-2. [[4.2 Packages]] - `__init__.py`, absolute vs relative imports, namespace packages, controlling public API with `__all__`.
+2. [[Packages]] - `__init__.py`, absolute vs relative imports, namespace packages, controlling public API with `__all__`.
 
-3. [[4.3 Import Mechanics]] - `sys.path`, `sys.modules`, import caching, circular imports and how to fix them.
+3. [[Import Mechanics]] - `sys.path`, `sys.modules`, import caching, circular imports and how to fix them.
 
-4. [[4.4 Third-Party Packages]] - Finding packages on PyPI, installing, pinning versions, lock files, reading package documentation, evaluating package quality.
+4. [[Third-Party Packages]] - Finding packages on PyPI, installing, pinning versions, lock files, reading package documentation, evaluating package quality.
 
 ---
 ## Phase 5: Errors, Files, and Resources
