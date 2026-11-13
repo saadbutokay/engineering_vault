@@ -457,7 +457,9 @@ def sort_orders(
         key = SORT_KEYS[sort_by]
     except KeyError:
         allowed = ", ".join(sorted(SORT_KEYS))
-        raise ValueError(f"cannot sort by {sort_by!r}; choose one of: {allowed}") from None
+        raise ValueError(
+            f"cannot sort by {sort_by!r}; choose one of: {allowed}"
+        ) from None
     return sorted(orders, key=key, reverse=descending)
 
 

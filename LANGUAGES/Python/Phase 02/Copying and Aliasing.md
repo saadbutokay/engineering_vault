@@ -108,9 +108,13 @@ The outer lists are different objects, but both contain the **same inner lists**
 Replacing an entire item, on the other hand, affects only the copy:
 
 ```text
+>>> nested = [[1, 2], [3, 4]]
+>>> shallow = nested.copy()
 >>> shallow[1] = ["x"]
 >>> nested[1]
 [3, 4]
+>>> shallow
+[[1, 2], ['x']]
 ```
 
 The distinction: **changing an object that two containers share** is visible to both, **rebinding a slot in one container** is not.

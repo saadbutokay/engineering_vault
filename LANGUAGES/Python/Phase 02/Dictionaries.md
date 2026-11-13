@@ -285,9 +285,11 @@ Keys come out in insertion order, yet equality ignores order.
 Picture a large array of slots. To store a key, Python computes `hash(key)`, uses that number to pick a slot, and puts the key and value there. To look it up, it does the same calculation and goes straight to the slot, then confirms the key matches using `==`. If two keys land in the same slot (a **collision**), Python probes a few other slots in a predictable pattern. With a good hash and some spare room, the average lookup, insert, and delete take **constant time**, no matter how big the dictionary is.
 
 ```text
-hash("apple") -> 8123 ... -> slot 3 -> ("apple", 3)
-hash("pear")  -> 5521 ... -> slot 1 -> ("pear", 0)
+hash("apple") -> some large number -> slot 3 -> ("apple", 3)
+hash("pear")  -> some large number -> slot 1 -> ("pear", 0)
 ```
+
+The slot numbers above are only an illustration of the idea, since the real hash values and slot layout are internal details.
 
 Two consequences follow:
 
