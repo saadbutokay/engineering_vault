@@ -56,13 +56,15 @@
 ---
 ## Phase 3: Linear Data Structures
 
-- **3.1 Linked lists:** Singly and doubly linked lists, nodes with classes and `__slots__`, sentinel nodes, insertion, deletion, and reversal, fast and slow pointers, Floyd's cycle detection, finding the middle, merging sorted lists, why linked lists are rarely the right choice in Python, when they still are.
-- **3.2 Stacks:** Last-in first-out behavior, using `list` as a stack, balanced brackets, expression evaluation, the shunting-yard algorithm, undo stacks, min stack, monotonic stack, next greater element, largest rectangle in a histogram, replacing recursion with a stack.
-- **3.3 Queues and deques:** First-in first-out behavior, `collections.deque` and why `list.pop(0)` is wrong, circular buffers, a queue from two stacks, monotonic deque and sliding window maximum, `queue.Queue` and `queue.PriorityQueue` for threads, bounded queues and back-pressure.
-- **3.4 Combining structures:** A hash map plus a doubly linked list for an LRU cache, `OrderedDict` and `functools.lru_cache` internals, LFU cache, ring-buffer log storage, browser history, insert-delete-random-in-constant-time, designing data structures from requirements.
+1. [[3.1-linked-lists]] - Singly and doubly linked lists, nodes with classes and `__slots__`, sentinel nodes, insertion, deletion, and reversal, fast and slow pointers, Floyd's cycle detection, finding the middle, merging sorted lists, why linked lists are rarely the right choice in Python, when they still are.
+
+2. [[3.2-stacks]] - Last-in first-out behavior, using `list` as a stack, balanced brackets, expression evaluation, the shunting-yard algorithm, undo stacks, min stack, monotonic stack, next greater element, largest rectangle in a histogram, replacing recursion with a stack.
+
+3. [[3.3-queues-and-deques]] - First-in first-out behavior, `collections.deque` and why `list.pop(0)` is wrong, circular buffers, a queue from two stacks, monotonic deque and sliding window maximum, `queue.Queue` and `queue.PriorityQueue` for threads, bounded queues and back-pressure.
+
+4. [[3.4-combining-structures]] - A hash map plus a doubly linked list for an LRU cache, `OrderedDict` and `functools.lru_cache` internals, LFU cache, ring-buffer log storage, browser history, insert-delete-random-in-constant-time, designing data structures from requirements.
 
 ---
-
 ## Phase 4: Trees
 
 - **4.1 Binary trees:** Terminology (root, leaf, height, depth, level), node representations, array representation, recursive and iterative traversals (preorder, inorder, postorder, level order), height and size, tree equality and symmetry, tree construction from traversals.

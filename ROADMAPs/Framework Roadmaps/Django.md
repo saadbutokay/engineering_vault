@@ -87,13 +87,15 @@
 ---
 ## Phase 4: Authentication, Authorization, and Sessions
 
-- **4.1 Sessions and cookies:** How sessions work, session backends (database, cache, signed cookies), `request.session`, session expiry and `SESSION_COOKIE_*` settings, `HttpOnly`, `Secure`, and `SameSite`, session fixation, why `pickle`-based session serialization is gone, logging out everywhere.
-- **4.2 The authentication system:** `User`, `authenticate`, `login`, `logout`, `LoginView` and `LogoutView`, `login_required` and `LoginRequiredMixin`, `LoginRequiredMiddleware` (Django 5.1), password hashing (PBKDF2, Argon2) and password validators, password reset flow, why every project defines a custom user model before the first migration, `AbstractUser` vs `AbstractBaseUser`, email as the login field.
-- **4.3 Authorization:** `is_staff`, `is_superuser`, permissions and groups, `has_perm`, `permission_required`, `UserPassesTestMixin`, object-level permissions and the IDOR problem, scoping querysets to the current user, `django-guardian` overview, policy functions, role design for real applications.
-- **4.4 Third-party and API authentication:** `django-allauth` for social login and email verification, OAuth 2.0 and OpenID Connect concepts, token authentication, JWT and its trade-offs vs sessions, two-factor authentication, passkeys overview, brute-force protection with `django-axes`, rate limiting login attempts, account enumeration.
+1. [[4.1 Sessions and Cookies]] - How sessions work, session backends (database, cache, signed cookies), `request.session`, session expiry and `SESSION_COOKIE_*` settings, `HttpOnly`, `Secure`, and `SameSite`, session fixation, why `pickle`-based session serialization is gone, logging out everywhere.
+
+2. [[4.2 The Authentication System]] - `User`, `authenticate`, `login`, `logout`, `LoginView` and `LogoutView`, `login_required` and `LoginRequiredMixin`, `LoginRequiredMiddleware` (Django 5.1), password hashing (PBKDF2, Argon2) and password validators, password reset flow, why every project defines a custom user model before the first migration, `AbstractUser` vs `AbstractBaseUser`, email as the login field.
+
+3. [[4.3 Authorization]] - `is_staff`, `is_superuser`, permissions and groups, `has_perm`, `permission_required`, `UserPassesTestMixin`, object-level permissions and the IDOR problem, scoping querysets to the current user, `django-guardian` overview, policy functions, role design for real applications.
+
+4. [[4.4 Third-Party and API Authentication]] - `django-allauth` for social login and email verification, OAuth 2.0 and OpenID Connect concepts, token authentication, JWT and its trade-offs vs sessions, two-factor authentication, passkeys overview, brute-force protection with `django-axes`, rate limiting login attempts, account enumeration.
 
 ---
-
 ## Phase 5: Built-in Framework Features
 
 - **5.1 The Django admin:** Registering models, `ModelAdmin` options (`list_display`, `list_filter`, `search_fields`, `readonly_fields`, `fieldsets`), inlines, custom actions, admin permissions, `list_select_related` and avoiding N+1 in admin, facets (Django 5.0), who should use the admin (internal staff, not customers), securing the admin URL and access.
