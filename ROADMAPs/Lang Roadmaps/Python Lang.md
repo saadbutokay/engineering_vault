@@ -59,20 +59,21 @@
 ---
 ## Phase 3: Functions
 
-1. [[3.1 Function Basics]] - `def`, parameters, return values, returning multiple values, docstrings, `None` as implicit return.
+1. [[Function Basics]] - `def`, parameters, return values, returning multiple values, docstrings, `None` as implicit return.
 
-2. [[3.2 Arguments]] - Positional, keyword, defaults, the mutable default argument pitfall, `*args`, `**kwargs`, positional-only (`/`), keyword-only (`*`), argument unpacking at call sites.
+2. [[Arguments]] - Positional, keyword, defaults, the mutable default argument pitfall, `*args`, `**kwargs`, positional-only (`/`), keyword-only (`*`), argument unpacking at call sites.
 
-3. [[3.3 Scope]] - LEGB rule, `global`, `nonlocal`, why to avoid global state.
-4. [[3.4 First-Class Functions]] - Functions as objects, passing and returning functions, `lambda`, `map`, `filter`, `sorted(key=)`.
+3. [[Scope]] - LEGB rule, `global`, `nonlocal`, why to avoid global state.
 
-5. [[3.5 Closures]] - Free variables, function factories, state capture, late-binding pitfall.
+4. [[First-Class Functions]] - Functions as objects, passing and returning functions, `lambda`, `map`, `filter`, `sorted(key=)`.
 
-6. [[3.6 Decorators]] - Basic decorators, `functools.wraps`, decorators with arguments, stacking decorators.
+5. [[Closures]] - Free variables, function factories, state capture, late-binding pitfall.
 
-7. [[3.7 The functools Module]] - `partial`, `lru_cache`, `cache`, `reduce`, `singledispatch`, `cached_property`.
+6. [[Decorators]] - Basic decorators, `functools.wraps`, decorators with arguments, stacking decorators.
 
-8. [[3.8 Recursion]] - Base case, recursive case, recursion limit, memoization, when to use iteration instead.
+7. [[The functools Module]] - `partial`, `lru_cache`, `cache`, `reduce`, `singledispatch`, `cached_property`.
+
+8. [[Recursion]] - Base case, recursive case, recursion limit, memoization, when to use iteration instead.
 
 ---
 ## Phase 4: Modules, Packages, and the Import System
