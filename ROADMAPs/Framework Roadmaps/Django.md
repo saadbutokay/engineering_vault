@@ -98,17 +98,23 @@
 ---
 ## Phase 5: Built-in Framework Features
 
-- **5.1 The Django admin:** Registering models, `ModelAdmin` options (`list_display`, `list_filter`, `search_fields`, `readonly_fields`, `fieldsets`), inlines, custom actions, admin permissions, `list_select_related` and avoiding N+1 in admin, facets (Django 5.0), who should use the admin (internal staff, not customers), securing the admin URL and access.
-- **5.2 Management commands:** `BaseCommand`, `add_arguments`, `handle`, output styles, exit codes with `CommandError`, idempotent and re-runnable commands, running commands from cron and schedulers, data import and maintenance commands, testing commands with `call_command`.
-- **5.3 Signals:** Built-in signals (`pre_save`, `post_save`, `m2m_changed`, `request_finished`), custom signals, `@receiver`, why signals hide control flow, `bulk_create` not firing signals, `transaction.on_commit` for side effects, when an explicit function call is better.
-- **5.4 Caching:** The cache framework, backends (local memory, Redis, Memcached, database, file), `cache.get`, `set`, `get_or_set`, per-view and template fragment caching, cache keys and versioning, invalidation strategies, cache stampede, what must never be cached (per-user data without a key), `cache_page` and the `Vary` header.
-- **5.5 Email and the messages framework:** `send_mail`, `EmailMessage`, `EmailMultiAlternatives`, backends (console, file, SMTP, locmem), HTML emails with templates, sending email outside the request cycle, the modern email API (Django 6.0), `django-anymail` overview, the `messages` framework and message levels.
-- **5.6 Internationalization, localization, and time zones:** `USE_TZ` and aware datetimes, storing UTC and converting at the edge, `timezone.now()`, translation with `gettext` and `gettext_lazy`, `makemessages` and `compilemessages`, `LocaleMiddleware`, formats, pluralization, right-to-left languages overview.
-- **5.7 Serialization, fixtures, and contrib apps:** `dumpdata`, `loaddata`, fixtures and why they are poor for tests at scale, the serialization framework, `django.contrib.sitemaps`, `syndication`, `humanize`, `redirects`, `sites`, `django.contrib.postgres`, writing a custom system check.
-- **5.8 Logging configuration:** The `LOGGING` dictionary, loggers, handlers, formatters and filters, the built-in `django`, `django.request`, and `django.db.backends` loggers, JSON logging, `structlog` overview, request ID propagation, `mail_admins` and its limits, never logging secrets or personal data, why `print` is not used in production.
+1. [[The Django Admin]] - Registering models, `ModelAdmin` options (`list_display`, `list_filter`, `search_fields`, `readonly_fields`, `fieldsets`), inlines, custom actions, admin permissions, `list_select_related` and avoiding N+1 in admin, facets (Django 5.0), who should use the admin (internal staff, not customers), securing the admin URL and access.
+
+2. [[Management Commands]] - `BaseCommand`, `add_arguments`, `handle`, output styles, exit codes with `CommandError`, idempotent and re-runnable commands, running commands from cron and schedulers, data import and maintenance commands, testing commands with `call_command`.
+
+3. [[Signals]] - Built-in signals (`pre_save`, `post_save`, `m2m_changed`, `request_finished`), custom signals, `@receiver`, why signals hide control flow, `bulk_create` not firing signals, `transaction.on_commit` for side effects, when an explicit function call is better.
+
+4. [[Caching]] - The cache framework, backends (local memory, Redis, Memcached, database, file), `cache.get`, `set`, `get_or_set`, per-view and template fragment caching, cache keys and versioning, invalidation strategies, cache stampede, what must never be cached (per-user data without a key), `cache_page` and the `Vary` header.
+
+5. [[Email and the Messages Framework]] - `send_mail`, `EmailMessage`, `EmailMultiAlternatives`, backends (console, file, SMTP, locmem), HTML emails with templates, sending email outside the request cycle, the modern email API (Django 6.0), `django-anymail` overview, the `messages` framework and message levels.
+
+6. [[Internationalization, Localization, and Time Zones]] - `USE_TZ` and aware datetimes, storing UTC and converting at the edge, `timezone.now()`, translation with `gettext` and `gettext_lazy`, `makemessages` and `compilemessages`, `LocaleMiddleware`, formats, pluralization, right-to-left languages overview.
+
+7. [[Serialization, Fixtures, and Contrib Apps]] - `dumpdata`, `loaddata`, fixtures and why they are poor for tests at scale, the serialization framework, `django.contrib.sitemaps`, `syndication`, `humanize`, `redirects`, `sites`, `django.contrib.postgres`, writing a custom system check.
+
+8. [[Logging Configuration]] - The `LOGGING` dictionary, loggers, handlers, formatters and filters, the built-in `django`, `django.request`, and `django.db.backends` loggers, JSON logging, `structlog` overview, request ID propagation, `mail_admins` and its limits, never logging secrets or personal data, why `print` is not used in production.
 
 ---
-
 ## Phase 6: Security
 
 - **6.1 Django's security model:** CSRF protection and the double-submit token mechanism, XSS and automatic escaping, `mark_safe` and `|safe` and their dangers, SQL injection and why the ORM protects you, clickjacking and `X-Frame-Options`, host header validation, what Django does not protect against.
