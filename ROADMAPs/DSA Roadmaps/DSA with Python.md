@@ -67,15 +67,19 @@
 ---
 ## Phase 4: Trees
 
-- **4.1 Binary trees:** Terminology (root, leaf, height, depth, level), node representations, array representation, recursive and iterative traversals (preorder, inorder, postorder, level order), height and size, tree equality and symmetry, tree construction from traversals.
-- **4.2 Binary search trees:** The BST property, search, insert, delete (three cases), successor and predecessor, validating a BST, kth smallest, degeneration to a linked list, inorder iterators, why Python has no built-in BST.
-- **4.3 Balanced trees and ordered containers:** Why balance matters, AVL trees and rotations, red-black trees overview, B-trees and why databases and filesystems use them, skip lists, `sortedcontainers` internals and when to use it, ordered maps in practice.
-- **4.4 Heaps and priority queues:** The binary heap and array layout, sift up and sift down, `heapify` in linear time, `heapq` (min-heap, negation for max-heap, tuples with tie-breakers), top-K, merging K sorted lists, two heaps for a running median, lazy deletion, task and event schedulers.
-- **4.5 Tries:** Prefix trees, insert, search, and prefix queries, dictionary-based vs array-based nodes, autocomplete, word search on a grid, longest common prefix, compressed tries and radix trees, memory costs in Python.
-- **4.6 Tree algorithms:** Lowest common ancestor, diameter, maximum path sum, path sum variants, serialization and deserialization, N-ary trees, tree dynamic programming, tree-shaped data in real systems (filesystems, org charts, DOM, ASTs).
+1. [[Binary Trees]] - Terminology (root, leaf, height, depth, level), node representations, array representation, recursive and iterative traversals (preorder, inorder, postorder, level order), height and size, tree equality and symmetry, tree construction from traversals.
+
+2. [[Binary Search Trees]] - The BST property, search, insert, delete (three cases), successor and predecessor, validating a BST, kth smallest, degeneration to a linked list, inorder iterators, why Python has no built-in BST.
+
+3. [[Balanced Trees and Ordered Containers]] - Why balance matters, AVL trees and rotations, red-black trees overview, B-trees and why databases and filesystems use them, skip lists, `sortedcontainers` internals and when to use it, ordered maps in practice.
+
+4. [[Heaps and Priority Queues]] - The binary heap and array layout, sift up and sift down, `heapify` in linear time, `heapq` (min-heap, negation for max-heap, tuples with tie-breakers), top-K, merging K sorted lists, two heaps for a running median, lazy deletion, task and event schedulers.
+
+5. [[Tries]] - Prefix trees, insert, search, and prefix queries, dictionary-based vs array-based nodes, autocomplete, word search on a grid, longest common prefix, compressed tries and radix trees, memory costs in Python.
+
+6. [[Tree Algorithms]] - Lowest common ancestor, diameter, maximum path sum, path sum variants, serialization and deserialization, N-ary trees, tree dynamic programming, tree-shaped data in real systems (filesystems, org charts, DOM, ASTs).
 
 ---
-
 ## Phase 5: Graphs
 
 - **5.1 Graph fundamentals and representations:** Directed vs undirected, weighted, cyclic and acyclic, degree, adjacency list, adjacency matrix, edge list, choosing a representation, building a graph from input, implicit graphs, grids and state spaces as graphs.
