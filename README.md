@@ -3,7 +3,7 @@ Welcome to the Engineering Vault! This repository contains notes, guides, codes 
 
 ## What to do?
 1. Download Obsidian for better studying. Link for Obsidian: https://obsidian.md
-2. For Obsidian plugins, go to settings, community plugins and download `code styler`. This is a must.
+2. For Obsidian plugins, go to settings (Obsidian Settings), then community plugins and download `code styler`. This is a must.
 3. You can use my favorite theme `Typewriter` from the settings. (Optional)
 4. Follow [[#Contents]] to understand where's what!
 
@@ -14,8 +14,6 @@ Have fun.
 All the things that this repo has!
 ### Languages
 1. [[Python Lang]]
-2. [[Go Lang]]
-3. [[C++ Lang]]
 
 ### Data Structures & Algorithms
 1. [[DSA with Python]]
