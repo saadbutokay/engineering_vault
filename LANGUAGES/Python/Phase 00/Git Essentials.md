@@ -1,5 +1,4 @@
 ## Overview
-
 **Git** is a version control system. It records the history of your project as a series of snapshots, so you can see what changed, when, and why, undo mistakes, and work on new ideas without risking working code. **GitHub** is a website that hosts Git repositories so you can back them up and collaborate. Git and GitHub are different things: Git is the tool on your machine, GitHub is one of several services built around it.
 
 By the end of this note you will be able to:
@@ -13,22 +12,20 @@ By the end of this note you will be able to:
 > [!note] Install check
 > Run `git --version` in your terminal. If it is missing, install it from git-scm.com, with Homebrew (`brew install git`), or your Linux package manager (`sudo apt install git` or `sudo dnf install git`). On macOS, typing `git` may offer to install developer tools.
 
+Use [this](https://git-scm.com/learn) : `git` Official Learning Site;
+Use [[Git Cheatsheet|this]] : `git` cheatsheet;
+Watch [this](https://youtu.be/8JJ101D3knE) : `git` Tutorial for Beginners (1 hour);
+
+---
 ## Core concepts
 
 ### Repository, commit, and history
-
 - A **repository** (repo) is a project folder that Git tracks. Its history is stored in a hidden `.git` folder.
 - A **commit** is a saved snapshot of your tracked files, with a message, an author, a timestamp, and a unique ID called a **hash**.
 - The **history** is the chain of commits, each pointing to the one before it.
 
 ### The three areas
-
 Git has an extra step compared with a normal "save" button. You choose exactly which changes go into the next snapshot.
-
-```text
-Working directory  --git add-->  Staging area  --git commit-->  Repository
-(your files)                      (next snapshot)                (permanent history)
-```
 
 | Area | What it holds |
 | --- | --- |
@@ -37,7 +34,6 @@ Working directory  --git add-->  Staging area  --git commit-->  Repository
 | Repository | All commits made so far |
 
 ### One-time setup
-
 Tell Git who you are. This information is attached to every commit.
 
 ```bash
@@ -63,7 +59,6 @@ git config --global init.defaultBranch main
 | `git restore --staged file` | Unstage a file but keep the edits |
 
 ### Branches
-
 A **branch** is a movable label pointing at a commit. Creating a branch is nearly free. It lets you experiment or build a feature without touching the main line of work.
 
 | Command | What it does |
@@ -75,7 +70,6 @@ A **branch** is a movable label pointing at a commit. Creating a branch is nearl
 | `git branch -d feature-name` | Delete a merged branch |
 
 ### Remotes and GitHub
-
 A **remote** is another copy of the repository, usually on a server. By convention the main remote is called `origin`.
 
 | Command | What it does |
@@ -88,7 +82,6 @@ A **remote** is another copy of the repository, usually on a server. By conventi
 | `git pull` | Download and integrate new commits from the remote |
 
 ### Authentication to GitHub
-
 GitHub does not accept your account password for Git operations. Use one of these:
 
 - **Git Credential Manager**, included with Git for Windows and available for macOS and Linux, which opens a browser to sign in.
@@ -110,7 +103,6 @@ GitHub does not accept your account password for Git operations. Use one of thes
 Rule of thumb: commit what a teammate needs to rebuild your project, ignore what can be regenerated or is private.
 
 ### Writing good commit messages
-
 - Start with a short summary line, around 50 characters, in the imperative mood: "Add login endpoint", not "Added login endpoint".
 - Make each commit one logical change.
 - If more explanation is needed, leave a blank line and add a paragraph about why the change was made.
@@ -118,7 +110,6 @@ Rule of thumb: commit what a teammate needs to rebuild your project, ignore what
 ## Basic syntax examples
 
 ### Your first repository
-
 ```bash
 mkdir git-practice
 cd git-practice
@@ -141,13 +132,10 @@ Untracked files:
  1 file changed, 1 insertion(+)
 3f2a9c1 Add README
 ```
-
 (The exact wording of Git's output varies a little by version.)
 
 ### Seeing changes before committing
-
 Edit `README.md` to add a line, then:
-
 ```bash
 git status
 git diff
@@ -157,7 +145,6 @@ git commit -m "Describe the project"
 ```
 
 ### Undoing small mistakes
-
 ```bash
 git restore README.md              # throw away unstaged edits
 git restore --staged README.md     # unstage but keep edits
@@ -167,7 +154,6 @@ git restore --staged README.md     # unstage but keep edits
 > Discarding unstaged edits cannot be undone, because Git never recorded them.
 
 ### A feature branch workflow
-
 ```bash
 git switch -c add-greeting
 echo "print('hello')" > hello.py
@@ -180,9 +166,7 @@ git log --oneline
 ```
 
 ### Merge conflicts
-
 If two branches change the same lines, Git cannot decide for you and marks the file:
-
 ```text
 <<<<<<< HEAD
 print("hello from main")
@@ -194,7 +178,6 @@ print("hello from the branch")
 To resolve it: edit the file to keep what you want and delete the three marker lines, then run `git add` on the file and `git commit`.
 
 ### Connecting to GitHub
-
 1. On GitHub, create a new **empty** repository (do not add a README or license there, or the histories will differ).
 2. Copy its address, then in your local project:
 
@@ -202,11 +185,9 @@ To resolve it: edit the file to keep what you want and delete the three marker l
 git remote add origin https://github.com/YOUR-USER/git-practice.git
 git push -u origin main
 ```
-
 Later pushes are just `git push`.
 
 ### Starting from an existing repository
-
 ```bash
 git clone https://github.com/YOUR-USER/git-practice.git
 cd git-practice
@@ -214,54 +195,42 @@ git pull
 ```
 
 ### Stopping Git from tracking a file you committed by mistake
-
 ```bash
 git rm --cached .env
 git commit -m "Stop tracking .env"
 ```
-
 The file stays on your disk but leaves version control. Add it to `.gitignore` as well.
 
 ## Deeper behavior
 
 ### Commits are snapshots, not differences
-
 Git stores the complete state of every tracked file in each commit, and it is smart about sharing unchanged content. Each commit has a hash computed from its contents and its parent. This is why history is tamper-evident: changing an old commit would change every hash after it.
 
 ### Branches are just pointers
-
 A branch is a small file containing a commit hash. `HEAD` is a pointer to the branch (or commit) you are currently on. When you commit, the current branch's pointer moves forward. This is why branching and switching are fast.
 
 ### Fast-forward and merge commits
-
 If `main` has not changed since you created your branch, merging simply moves the `main` pointer forward (**fast-forward**). If both sides have new commits, Git creates a **merge commit** with two parents.
 
 ### Ignoring does not untrack
-
 `.gitignore` only affects untracked files. If a file was committed before you added it to `.gitignore`, Git keeps tracking it until you run `git rm --cached`.
 
 ### History is permanent, so secrets are too
-
 If you commit a password and then delete it in the next commit, the password remains visible in history. Rotate the secret. Rewriting history is possible but difficult once the repository is shared.
 
 ### Never rewrite shared history
-
 Commands that rewrite commits (such as `git reset --hard` after sharing, `git push --force`, or rebasing a public branch) can destroy teammates' work. Learn them later and avoid them on shared branches.
 
 ### The reflog: a safety net
-
 Even after "losing" commits, Git usually keeps references in the **reflog** for a while. `git reflog` lists where `HEAD` has been, which often lets you recover.
 
 ### Line endings and operating systems
-
 Windows ends lines with two characters, macOS and Linux with one. Git can normalize this. On Windows the installer's default setting handles it, and a `.gitattributes` file can enforce a team rule.
 
 ### Pull requests are a GitHub feature
-
 A **pull request** asks teammates to review and merge your branch. The usual team workflow is: create a branch, commit, push it, open a pull request, get review, merge, delete the branch. Phase 13 covers collaboration workflows.
 
 ## Industry-level snippet
-
 Release and deployment scripts commonly refuse to build from a dirty or wrong branch, and they stamp the build with the commit hash. This script uses Git through `subprocess`, reports problems clearly, and returns exit codes for automation.
 
 ```python
@@ -369,7 +338,6 @@ if __name__ == "__main__":
 ```
 
 Why it is written this way:
-
 - `git status --porcelain` produces stable, script-friendly output. It prints nothing when the working directory is clean.
 - Passing the command as a list (`["git", ...]`) rather than one string avoids shell-quoting problems and injection risks.
 - Every way the command can fail (missing git, a timeout, a non-zero exit) becomes one clear `GitError`.
@@ -377,7 +345,6 @@ Why it is written this way:
 - A real pipeline would also confirm the branch is up to date with the remote and embed `state.commit` in the build metadata.
 
 ## Common mistakes
-
 1. **Running `git init` inside another repository or in your home folder.** Check with `pwd` first.
 2. **Committing everything with `git add .` without reading `git status`.** You may add secrets, caches, or large files.
 3. **Writing vague messages such as "fix" or "update".** Future you will not know what changed.
@@ -391,7 +358,6 @@ Why it is written this way:
 11. **Believing deleting a committed secret removes it.** It stays in history, so rotate it.
 
 ## Practice exercises
-
 1. Install Git, set your name, email, and default branch, and show your configuration with `git config --list`.
 2. Create a new folder, initialize a repository, and make three separate commits (a README, a Python file, and a `.gitignore`). View the history in compact form.
 3. Edit a file, then use `git diff` before staging and `git diff --staged` after staging. Describe the difference.
@@ -405,7 +371,6 @@ Why it is written this way:
 11. Extend the snippet to also fail the release if the current commit does not match the remote `origin/main`.
 
 ## Summary
-
 - Git records project history as commits. GitHub hosts repositories but is a separate service.
 - Changes move from working directory to staging area to repository through `git add` and `git commit`.
 - Use `status`, `log --oneline`, and `diff` constantly to know where you stand.
@@ -413,3 +378,5 @@ Why it is written this way:
 - Connect to GitHub with `git remote add origin` and `git push -u origin main`. Authenticate with a credential manager, `gh`, or SSH, not your account password.
 - Commit source, tests, configuration, and documentation. Ignore virtual environments, caches, build output, and secrets.
 - History is permanent. Never commit secrets, and never rewrite history that others have.
+
+---

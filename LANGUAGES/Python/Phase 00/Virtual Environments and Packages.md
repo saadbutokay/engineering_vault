@@ -1,9 +1,7 @@
 ## Overview
-
 Python becomes powerful through **packages**: code written by other people that you install and use. Web frameworks, data tools, database drivers, and testing tools are all packages. A **virtual environment** is a private, disposable folder where one project's packages live, so projects never interfere with each other or with your operating system.
 
 By the end of this note you will be able to:
-
 - Explain why every project should have its own virtual environment.
 - Create, activate, and deactivate a virtual environment on Windows, macOS, and Linux.
 - Install, list, upgrade, and remove packages with `pip`.
@@ -13,10 +11,14 @@ By the end of this note you will be able to:
 > [!note] Terminology
 > A **package** or **dependency** is third-party code you install. **PyPI** (the Python Package Index at pypi.org) is the public website that hosts them. **pip** is the standard tool that downloads from PyPI. A **requirement** is a line stating which package and version a project needs.
 
+Watch [this](https://youtu.be/Y21OR1OPC9A) : Python Virtual Environments;
+Watch [this](https://youtu.be/R9_gToHrfWo) : `uv` vs. `pip`;
+Watch [this](https://youtu.be/zgSQr0d5EVg) : `uv` for EVERYTHING;
+Use [[Python venv Cheatsheet (macOS)|this]] : Python `venv` Cheatsheet (MacOS);
+
 ## Core concepts
 
-### Why isolation matters
-
+### Why isolation matters?
 Imagine two projects on one computer.
 
 - Project A was written two years ago and needs version 1 of a library.
@@ -25,15 +27,12 @@ Imagine two projects on one computer.
 Only one version can be installed in a single place at a time. If both projects share one global Python, one of them breaks. A virtual environment gives each project its own space.
 
 Isolation also gives you:
-
 - **Safety.** Experiments cannot damage your operating system's Python.
 - **Reproducibility.** You can describe exactly which packages a project needs, and a teammate or server can rebuild the same setup.
 - **Cleanliness.** To remove a project's packages, delete one folder.
 
-### What a virtual environment is
-
+### What a virtual environment is?
 It is an ordinary folder, conventionally named `.venv`, inside your project. It contains:
-
 - A link or copy of a Python interpreter.
 - An empty `site-packages` folder, where installed packages go.
 - Activation scripts.
@@ -44,18 +43,14 @@ It is an ordinary folder, conventionally named `.venv`, inside your project. It 
 | Interpreter and scripts | `.venv\Scripts\` | `.venv/bin/` |
 | Installed packages | `.venv\Lib\site-packages\` | `.venv/lib/python3.x/site-packages/` |
 
-### Creating one with venv
-
+### Creating one with `venv`
 `venv` is built into Python.
-
 ```bash
 python -m venv .venv
 ```
-
 Use `python3` instead of `python` on macOS and Linux when you are outside an environment.
 
 ### Activating and deactivating
-
 Activation tells your current terminal to use the environment's Python and pip.
 
 | Shell | Activate command |
@@ -72,8 +67,7 @@ To leave the environment, type `deactivate` in any of them. When active, your pr
 > `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned`
 > Then open a new terminal and try again.
 
-### Installing packages with pip
-
+### Installing packages with `pip`
 Always use `python -m pip` so the package goes into the interpreter you intend.
 
 | Task | Command |
@@ -90,7 +84,6 @@ Always use `python -m pip` so the package goes into the interpreter you intend.
 The quotes around `"requests>=2.31,<3"` are required. Without them the shell treats `>` and `<` as redirection symbols.
 
 ### requirements.txt
-
 `requirements.txt` is a plain text file with one requirement per line. It lets anyone recreate your environment.
 
 ```text
@@ -99,16 +92,13 @@ rich>=13
 ```
 
 Two commands do the work:
-
 ```bash
 python -m pip freeze > requirements.txt
 python -m pip install -r requirements.txt
 ```
-
 `freeze` writes every installed package with its exact version. `install -r` reads the file and installs everything in it.
 
-### uv: the faster alternative
-
+### `uv`: the faster alternative
 `uv` (installed in Chapter 0.2) offers the same functions with much higher speed and a few extras.
 
 | Task | pip way | uv way |
@@ -125,7 +115,6 @@ python -m pip install -r requirements.txt
 ## Basic syntax examples
 
 ### Complete first-time workflow on macOS or Linux
-
 ```bash
 mkdir demo-env
 cd demo-env
@@ -140,7 +129,6 @@ deactivate
 ```
 
 ### Complete first-time workflow on Windows PowerShell
-
 ```powershell
 mkdir demo-env
 cd demo-env
@@ -155,21 +143,17 @@ deactivate
 ```
 
 ### Prove that isolation works
-
 ```bash
 python3 -c "import requests"
 ```
 
 Run this outside the environment, and if `requests` is not installed globally you will see:
-
 ```text
 ModuleNotFoundError: No module named 'requests'
 ```
-
 Activate the environment and run the same command, and it succeeds. The package exists only inside `.venv`.
 
 ### Recreating an environment from scratch
-
 A teammate clones your project and has no `.venv`. They run:
 
 ```bash
@@ -178,23 +162,19 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-### The same with uv
-
+### The same with `uv`
 ```bash
 uv venv
 uv pip install requests
 uv pip freeze > requirements.txt
 uv pip install -r requirements.txt
 ```
-
 Because uv finds `.venv` automatically, no activation is needed for these commands. You still activate when you want to type plain `python` and have it use the environment.
 
 ## Deeper behavior
 
 ### What activation really does
-
 Activation does very little. It adds `.venv/bin` (or `.venv\Scripts`) to the front of your `PATH` for that terminal session and sets a variable named `VIRTUAL_ENV`. Because that folder is now first, typing `python` finds the environment's interpreter before any other. You can skip activation completely by running the interpreter by its full path:
-
 ```bash
 .venv/bin/python script.py
 ```
@@ -202,13 +182,10 @@ Activation does very little. It adds `.venv/bin` (or `.venv\Scripts`) to the fro
 ```powershell
 .venv\Scripts\python.exe script.py
 ```
-
 Servers and scheduled jobs often do exactly this.
 
 ### Detecting an environment from Python
-
 Inside a virtual environment, `sys.prefix` differs from `sys.base_prefix`:
-
 ```python
 import sys
 
@@ -217,43 +194,32 @@ print("Inside a virtual environment:", in_venv)
 ```
 
 ### Direct dependencies versus transitive dependencies
-
 You install `requests`. But `requests` needs other packages (for example `urllib3` and `certifi`). Those are **transitive dependencies**. `pip freeze` lists everything, direct and transitive, which is good for exact reproduction and noisy for humans. Many teams keep a short hand-written list of direct dependencies and generate the full pinned file from it:
-
 ```bash
 uv pip compile requirements.in -o requirements.txt
 ```
-
 Phase 4 returns to lock files and version pinning.
 
 ### Environments are not portable
-
-Do not copy a `.venv` folder to another computer or move it to another location. It stores absolute paths. Recreate it from `requirements.txt` instead. Likewise, never commit `.venv` to Git.
+Do not copy a `.venv` folder to another computer or move it to another location. It stores absolute paths. Recreate it from `requirements.txt` instead. Likewise, ==🔴never commit `.venv` to Git.==
 
 ### Externally managed environments
-
-On Debian, Ubuntu, and Homebrew Python, pip may refuse to install into the system interpreter:
-
+On `Debian, Ubuntu, and Homebrew Python, pip` may refuse to install into the system interpreter:
 ```text
 error: externally-managed-environment
 ```
-
 This is intentional. Create a virtual environment and install there.
 
-### Why you do not use sudo with pip
-
+### Why you do not use `sudo` with `pip`
 Running `sudo pip install` changes files owned by the operating system and can break system tools. If a command seems to need `sudo`, you almost certainly want a virtual environment instead.
 
-### uv environments do not include pip by default
-
+### `uv` environments do not include `pip` by default
 `uv venv` creates an environment without `pip` inside it. Use `uv pip install ...` instead of `python -m pip install ...`, or create the environment with `uv venv --seed` if you want pip included.
 
 ### Where pip downloads from
-
 By default pip downloads from PyPI. Packages can contain arbitrary code that runs on your machine. Check names carefully, because attackers publish packages with names similar to popular ones. Chapter 4.4 covers how to evaluate package quality.
 
 ## Industry-level snippet
-
 New developers and CI machines need a one-command setup. This script creates a virtual environment if it does not exist and installs the project's dependencies. It works on every operating system, uses logging, validates its inputs, and distinguishes different failures with exit codes.
 
 ```python
@@ -327,14 +293,12 @@ if __name__ == "__main__":
 ```
 
 Notes on the design:
-
 - `Path(__file__).resolve().parent` anchors every path to the script's own folder, so it works no matter where the user runs it from.
 - `subprocess.run(..., check=True)` raises an exception when pip fails, instead of silently continuing.
 - Running pip through the environment's own interpreter means activation is not needed.
 - A real project would also pin Python's version and print the activation command at the end.
 
 ## Common mistakes
-
 1. **Installing packages globally by accident.** Always look for `(.venv)` in your prompt, or use `python -m pip` with the environment's Python.
 2. **Forgetting to activate after opening a new terminal.** Activation lasts for one terminal session only.
 3. **Committing `.venv` to Git.** Add it to `.gitignore` (Chapter 0.6) and rely on `requirements.txt`.
@@ -347,7 +311,6 @@ Notes on the design:
 10. **Running `uv pip` and `pip` interchangeably without understanding that they are different tools.** Pick one workflow per project and stay with it.
 
 ## Practice exercises
-
 1. Create a folder named `env-practice` and a virtual environment inside it using `venv`. List the contents of `.venv` and identify where the interpreter lives on your system.
 2. Activate the environment. Prove it is active in two different ways.
 3. Install the `requests` package. Print its version from Python, then show where pip says it is located.
@@ -360,7 +323,6 @@ Notes on the design:
 10. Extend the industry-level snippet so that it accepts an optional path to a different requirements file as a command-line argument and falls back to the default when none is given.
 
 ## Summary
-
 - A virtual environment is a per-project folder, usually `.venv`, holding its own interpreter link and packages.
 - Isolation prevents version conflicts, protects the system Python, and makes setups reproducible.
 - Create with `python -m venv .venv` or `uv venv`, activate with the script for your shell, and leave with `deactivate`.

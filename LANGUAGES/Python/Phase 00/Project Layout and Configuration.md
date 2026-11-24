@@ -1,5 +1,4 @@
 ## Overview
-
 A single file is fine for learning, but real software is made of many files that must be organized predictably. This chapter shows the standard way to lay out a Python project, how `pyproject.toml` describes it, how `.gitignore` keeps junk out of version control, and how `.env` files keep secrets out of your code.
 
 By the end of this note you will be able to:
@@ -12,12 +11,13 @@ By the end of this note you will be able to:
 > [!note] Why this matters early
 > Habits formed in your first projects stay with you. A clean layout makes testing, packaging, and teamwork easier later, and leaking a password into a public repository is a mistake that is easy to prevent and painful to fix.
 
+Watch [this](https://youtu.be/b-LJ1xzIo8Q) : Python Project Structure;
+
+---
 ## Core concepts
 
 ### The standard layout
-
 Here is a layout used by many professional Python projects:
-
 ```text
 inventory-service/
   .env.example
@@ -54,27 +54,21 @@ inventory-service/
 | Typical use | Small scripts | Libraries, services, anything you will ship |
 
 With the `src/` layout, you install your own project into the virtual environment in **editable mode**. That makes Python see your package while still letting your edits take effect immediately:
-
 ```bash
 python -m pip install -e .
 ```
-
-or
-
+or,
 ```bash
 uv pip install -e .
 ```
 
 ### Package names and folder names
-
 A package folder must be a valid Python name: lowercase letters, digits, and underscores, never starting with a digit and never containing hyphens or spaces. A project called `inventory-service` therefore has a package named `inventory_service`.
 
 ### The `__init__.py` file
-
 A folder with an `__init__.py` file is a regular package. The file can be empty, or it can hold package-level information such as a version string. Chapter 4.2 explains packages in depth.
 
-### pyproject.toml
-
+### `pyproject.toml`
 `pyproject.toml` is the single configuration file for modern Python projects. It uses **TOML**, a simple format of `key = value` lines grouped under `[section]` headers. It has three main areas:
 
 | Section | Role |
@@ -83,18 +77,15 @@ A folder with an `__init__.py` file is a regular package. The file can be empty,
 | `[project]` | Name, version, description, Python requirement, and dependencies |
 | `[tool.NAME]` | Settings for individual tools such as pytest, ruff, and mypy |
 
-### .gitignore
-
+### `.gitignore`
 A `.gitignore` file lists patterns for files Git should not track. Typical entries for Python projects are the virtual environment, compiled bytecode, caches from tools, build output, and `.env`.
 
-### Environment variables and .env files
-
+### Environment variables and `.env` files
 An **environment variable** is a named value provided to a program from outside its code. Programs read them at startup to learn things like a database address or an API key.
 
 A **`.env` file** is a plain text file of `NAME=value` lines used during local development to set those variables. Python does not read `.env` files on its own. A small package called `python-dotenv`, your editor, or your tooling loads them. On real servers, the hosting platform sets the variables directly and no `.env` file exists.
 
-### Why secrets never go into code
-
+### Why secrets never go into code?
 - Source code is copied everywhere: laptops, backups, code review tools, and repositories.
 - Git remembers every version forever. Deleting a password from a file does not delete it from history.
 - Public repositories are scanned by automated bots within minutes of a secret appearing.
@@ -106,9 +97,7 @@ A **`.env` file** is a plain text file of `NAME=value` lines used during local d
 ## Basic syntax examples
 
 ### Create the layout from the terminal
-
 macOS and Linux:
-
 ```bash
 mkdir -p inventory-service/src/inventory_service inventory-service/tests
 cd inventory-service
@@ -117,7 +106,6 @@ touch src/inventory_service/__init__.py src/inventory_service/main.py
 ```
 
 Windows PowerShell:
-
 ```powershell
 mkdir inventory-service\src\inventory_service, inventory-service\tests
 cd inventory-service
@@ -125,8 +113,7 @@ New-Item README.md, pyproject.toml, .gitignore, .env.example
 New-Item src\inventory_service\__init__.py, src\inventory_service\main.py
 ```
 
-### A minimal pyproject.toml
-
+### A minimal `pyproject.toml`
 ```toml
 [build-system]
 requires = ["hatchling"]
@@ -142,22 +129,19 @@ dependencies = []
 ```
 
 Then install it into your active virtual environment and import it:
-
 ```bash
 python -m pip install -e .
 python -c "import inventory_service; print(inventory_service.__file__)"
 ```
 
 ### Adding dependencies
-
 ```toml
 dependencies = [
   "requests>=2.31,<3",
 ]
 ```
 
-### A starter .gitignore
-
+### A starter `.gitignore`
 ```text
 # Virtual environments
 .venv/
@@ -182,13 +166,10 @@ build/
 .idea/
 .DS_Store
 ```
-
 Lines starting with `#` are comments. A trailing slash matches folders. `*` matches any characters.
 
-### .env and .env.example
-
-`.env` (never committed):
-
+### `.env` and `.env.example`
+`.env` (==🔴never committed==):
 ```text
 DATABASE_URL=postgresql://app:s3cret@localhost:5432/inventory
 API_KEY=live-1234567890
@@ -197,18 +178,15 @@ REQUEST_TIMEOUT=10
 ```
 
 `.env.example` (committed, with fake values):
-
 ```text
 DATABASE_URL=postgresql://user:password@localhost:5432/dbname
 API_KEY=replace-me
 DEBUG=false
 REQUEST_TIMEOUT=10
 ```
-
 A new teammate copies `.env.example` to `.env` and fills in real values.
 
 ### Reading an environment variable
-
 ```python
 import os
 
@@ -216,21 +194,17 @@ api_key = os.environ["API_KEY"]            # raises KeyError if missing
 timeout = os.environ.get("REQUEST_TIMEOUT", "10")   # falls back to "10"
 print(api_key, timeout)
 ```
-
 Environment variables are always text. Convert to numbers or booleans yourself.
 
 ## Deeper behavior
 
-### Why the src layout catches real bugs
-
+### Why the `src` layout catches real bugs?
 With a flat layout, running tests from the project root puts the root on Python's import path, so `import inventory_service` quietly succeeds by loading the files in front of you, even if packaging is broken. With `src/`, the package is only importable if it is installed, so a missing file or wrong configuration fails in testing rather than in production.
 
 ### Editable installs
-
 `pip install -e .` does not copy your code into `site-packages`. It creates a pointer back to your folder. Edit a file, rerun your code, and the change takes effect. You only reinstall when you change dependencies or package structure in `pyproject.toml`.
 
 ### Build backends
-
 The `[build-system]` section names the tool that turns your source into an installable package. Hatchling, setuptools, flit, and others all work with the same `[project]` table. If your project name is `inventory-service`, hatchling automatically finds `src/inventory_service/`. Phase 13 covers building and publishing.
 
 ### Version specifiers
@@ -243,19 +217,15 @@ The `[build-system]` section names the tool that turns your source into an insta
 | `~=2.31` | Compatible release: 2.31 or newer but below 3.0 |
 
 ### Configuration hierarchy
-
 A common priority for settings, from lowest to highest: defaults in code, then a config file, then `.env` for local development, then real environment variables, then command-line options. Higher entries override lower ones. This keeps one codebase working in every environment.
 
 ### Validate configuration at startup
-
 Failing immediately with a clear message when a required setting is missing is far better than crashing minutes later with a confusing error. Treat configuration loading as a gate that must pass before the application starts.
 
 ### Do not log secrets
-
 Logging a settings object that contains a password writes the password to log files, which are then widely shared. Mark secret fields so they are hidden when printed.
 
 ## Industry-level snippet
-
 This module loads settings from environment variables, validates them, converts types, hides secrets from logs, and raises a clear custom error. It belongs at `src/inventory_service/config.py`.
 
 ```python
@@ -333,7 +303,6 @@ def load_settings() -> Settings:
 ```
 
 And a tiny entry point, `src/inventory_service/main.py`:
-
 ```python
 """Entry point for the inventory service."""
 
@@ -362,7 +331,6 @@ if __name__ == "__main__":
 ```
 
 Run it, after installing the project in editable mode:
-
 ```bash
 python -m inventory_service.main
 ```
@@ -370,7 +338,6 @@ python -m inventory_service.main
 With no variables set you get a clear message and exit code 2. If you set `DATABASE_URL` and `API_KEY` in your shell, it starts.
 
 Why this is production-style:
-
 - `frozen=True` makes the settings object read-only after creation, preventing accidental changes.
 - `field(repr=False)` ensures secrets do not appear when the object is printed or logged.
 - Every conversion has explicit validation and a specific error message.
@@ -380,7 +347,6 @@ Why this is production-style:
 To load a `.env` file automatically in local development you could add the `python-dotenv` package and call `load_dotenv()` before `load_settings()`. Keep that call out of production code paths, where the platform provides the real variables.
 
 ## Common mistakes
-
 1. **Putting secrets directly in code.** Even in a private repository, this is a habit that leaks eventually.
 2. **Committing `.env`.** Add it to `.gitignore` before the first commit, not after.
 3. **Creating `.gitignore` after files were already committed.** Ignoring does not untrack files already in history. Remove them from tracking (Chapter 0.8) and rotate any leaked secret.
@@ -393,7 +359,6 @@ To load a `.env` file automatically in local development you could add the `pyth
 10. **Reading configuration from many places across the code.** Load it once at startup into one object and pass that around.
 
 ## Practice exercises
-
 1. Create the layout shown in this note for a project named `library-api`, using commands only. Verify it with a directory listing.
 2. Write a minimal `pyproject.toml` for it that requires Python 3.12 or newer and has no dependencies.
 3. Install the project in editable mode into a fresh virtual environment, then import the package from a different folder to prove the install worked.
@@ -406,7 +371,6 @@ To load a `.env` file automatically in local development you could add the `pyth
 10. Add a test file in `tests/` that checks `load_settings` raises `ConfigError` when `DATABASE_URL` is missing, without using real secrets.
 
 ## Summary
-
 - Use a `src/` layout with a `tests/` folder next to it. Name the package folder with underscores.
 - `pyproject.toml` holds project metadata, dependencies, and tool settings in TOML format.
 - Install your own project with `pip install -e .` so tests and tools import the real package.
@@ -414,3 +378,5 @@ To load a `.env` file automatically in local development you could add the `pyth
 - Configuration comes from the environment. `.env` files are a local convenience, `.env.example` documents what is needed.
 - Never put secrets in code. If one leaks, rotate it.
 - Load and validate configuration once at startup, fail early with clear errors, and keep secrets out of logs.
+
+---

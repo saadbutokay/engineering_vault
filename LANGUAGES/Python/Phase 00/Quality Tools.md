@@ -1,5 +1,4 @@
 ## Overview
-
 Humans are good at design and poor at noticing a missing import or a stray space on line 212. Quality tools are programs that check your code automatically, so people can focus on the parts that need judgment. In this chapter you will meet three tools that almost every modern Python project uses:
 
 - **ruff**: a very fast linter and formatter. A **linter** finds likely bugs and style problems. A **formatter** rewrites code into a consistent layout.
@@ -7,7 +6,6 @@ Humans are good at design and poor at noticing a missing import or a stray space
 - **pre-commit**: a manager for **Git hooks**, small checks that run automatically each time you commit.
 
 By the end of this note you will be able to:
-
 - Install and run ruff and mypy.
 - Configure all three tools in `pyproject.toml` and `.pre-commit-config.yaml`.
 - Read and fix typical warnings.
@@ -16,7 +14,16 @@ By the end of this note you will be able to:
 > [!note] Why automate
 > Automated checks are impartial and instant. They end style debates, catch whole categories of bugs before a reviewer sees them, and give you confidence to change code.
 
+Use [[Python Code Quality Cheatsheet|this]] : Python Code Quality Cheatsheet;
+Watch [this](https://youtu.be/qU3Rc6_B9es) : How to Write Production Python Code;
+Watch [this](https://youtu.be/xhg1dJHLqSM) : Pre-commit Tutorial;
+Watch [this](https://youtu.be/ERPsVzN0EIg) : Python Code Quality - (Ruff, Mypy, Pytest, Bandit);
+
+---
 ## Core concepts
+In Python, "quality tools" generally fall into two main categories: **Code Quality Tools** (which check your source code for bugs, style, and security) and **Data Quality Tools** (which validate datasets and pipelines).
+
+For writing clean Python software, start with **[Ruff](https://realpython.com/python-code-quality/)** for `linting and formatting`, paired with **[Mypy](https://realpython.com/python-code-quality/)** for type checking and `pytest` for automated testing.
 
 ### Linting, formatting, and type checking
 
@@ -25,31 +32,26 @@ By the end of this note you will be able to:
 | Linting | Is anything here probably wrong or risky? | `ruff check` | Only with `--fix`, for safe fixes |
 | Formatting | Is the layout consistent? | `ruff format` | Yes |
 | Type checking | Do the values match the declared types? | `mypy` | No |
-
+m
 These are complementary. Passing one does not replace the others.
 
 ### Installing the tools
-
 Inside your activated virtual environment:
-
 ```bash
 python -m pip install ruff mypy pre-commit
 ```
 
 or with uv:
-
 ```bash
 uv pip install ruff mypy pre-commit
 ```
 
 Check:
-
 ```bash
 ruff --version
 mypy --version
 pre-commit --version
 ```
-
 In a real project you list these as **development dependencies**, separate from what the application needs at run time. Phase 13 covers that structure.
 
 ### Ruff commands
@@ -63,7 +65,6 @@ In a real project you list these as **development dependencies**, separate from 
 | `ruff format --diff` | Show what formatting would change |
 
 ### Ruff rule families
-
 Ruff organizes lint rules into families, each identified by a letter code. You choose which families to enable.
 
 | Code | Family | Catches |
@@ -463,3 +464,5 @@ What this setup gives you:
 - Ruff and mypy are configured in `pyproject.toml`. pre-commit is configured in `.pre-commit-config.yaml`.
 - Pin tool versions, update them deliberately, and mirror the same checks in continuous integration.
 - Suppress warnings only with a specific code and a reason, and treat green checks as necessary but not sufficient.
+
+---

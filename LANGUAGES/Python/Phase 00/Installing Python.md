@@ -1,22 +1,17 @@
 ## Overview
-
 Python is not built into your computer in a form you can rely on. You install it, verify it, and learn how to manage more than one version, because real projects often need different versions on the same machine.
 
 This roadmap targets **Python 3.12 or newer**. At the time of writing, Python 3.15 is the newest release, with 3.12, 3.13, and 3.14 all still widely used. Any of those is fine for learning. If you want the safest choice, pick a version one or two releases behind the newest, because third-party libraries sometimes take a few months to support a brand-new release.
 
 By the end of this note you will be able to:
-
 - Install Python on Windows, macOS, or Linux.
 - Verify the installation and find out which Python your terminal is using.
 - Explain what `PATH` is and why a wrong `PATH` causes "command not found" errors.
 - Install `uv` and use it to download and switch between Python versions.
 
+---
 ## Core concepts
-
-### What "installing Python" means
-
 Installing Python puts three things on your machine:
-
 1. The **interpreter**, the program that runs your code.
 2. The **standard library**, a large collection of ready-made modules (`json`, `pathlib`, `sqlite3`, and many more).
 3. Tools like `pip`, the package installer, and `venv`, the virtual environment creator.
@@ -24,19 +19,15 @@ Installing Python puts three things on your machine:
 It also makes the interpreter reachable from your terminal by adding it to `PATH`.
 
 ### PATH
-
 `PATH` is a list of folders the shell searches, in order, when you type a command. If Python's folder is not in that list, the shell answers with an error such as:
 
 ```text
 'python' is not recognized as an internal or external command
 ```
-
-or
-
+or,
 ```text
 command not found: python
 ```
-
 Many installation problems are really PATH problems.
 
 ### The names of the command
@@ -50,7 +41,6 @@ Many installation problems are really PATH problems.
 On macOS and Linux, plain `python` often does not exist at all, or points to something old. Using `python3` avoids ambiguity. Inside a virtual environment (next chapters), `python` always works.
 
 ### Installing on Windows
-
 There are two official routes from python.org.
 
 **Route 1: Python install manager (recommended for new installs).** This is the current official way. It provides the `py` and `python` commands and can install and switch between many versions. You can get it from the Microsoft Store (search for "Python install manager"), through `winget`, or from the download page at python.org. After installing it, open a new PowerShell window.
@@ -73,7 +63,6 @@ The traditional installer includes the **`py` launcher**, a small program that l
 > If Python is not installed, typing `python` may open the Microsoft Store instead of showing an error. That is Windows redirecting you, not Python running. Install Python, then open a fresh terminal.
 
 ### Installing on macOS
-
 Two good options.
 
 **Option A: the python.org installer.** Download the macOS installer package from python.org and double-click it. It installs into `/Library/Frameworks/Python.framework` and gives you the `python3` command. If the installation folder shows a script named `Install Certificates.command`, run it once so Python can verify HTTPS certificates.
@@ -87,7 +76,6 @@ brew install python@3.13
 Do not use or modify the Python that macOS itself might ship with. Treat it as belonging to the operating system.
 
 ### Installing on Linux
-
 Most distributions already include Python 3 because system tools depend on it. You usually need to add the extra pieces.
 
 | Distribution family | Command |
@@ -102,7 +90,6 @@ The version you get depends on the distribution release. An older Ubuntu release
 > Those distributions split `venv` out of the main package. If `python3 -m venv .venv` fails later with a message about `ensurepip`, installing `python3-venv` fixes it.
 
 ### Verifying the installation
-
 ```powershell
 python --version
 py --version
@@ -119,35 +106,28 @@ Both of these answer two questions: which version, and which file on disk. If th
 ```bash
 python3 -c "import sys; print(sys.version); print(sys.executable)"
 ```
-
 On Windows, use `python` or `py` in place of `python3`.
 
 ### Installing uv
-
 `uv` is a fast, modern tool for installing Python versions, creating virtual environments, and installing packages. It is written in Rust and replaces several older tools at once.
 
 macOS and Linux:
-
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
 Windows (PowerShell):
-
 ```powershell
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
 Alternatives: `brew install uv` on macOS, or `pip install uv` into any Python. Open a new terminal and check:
-
 ```bash
 uv --version
 ```
 
 ### Managing multiple Python versions
-
 With uv:
-
 ```bash
 uv python list              # show available and installed versions
 uv python install 3.13      # download and install 3.13
@@ -164,6 +144,7 @@ Other ways to pick a version:
 | Project pin file | `uv python pin 3.12` writes a `.python-version` file |
 | Virtual environment | `uv venv --python 3.12` creates an environment using that version |
 
+---
 ## Basic syntax examples
 
 ### Check your install in under a minute
@@ -174,14 +155,12 @@ python3 -c "print('Python is working')"
 ```
 
 Expected output (your version number will differ):
-
 ```text
 Python 3.13.5
 Python is working
 ```
 
 ### See which interpreter a command uses
-
 ```powershell
 Get-Command python | Select-Object Source
 ```
@@ -193,7 +172,6 @@ which python3
 On Windows, if you also have `where.exe` available, `where.exe python` lists every `python` found on `PATH`. Note the `.exe`: plain `where` in PowerShell is a different command.
 
 ### Install and use a second Python version with uv
-
 ```bash
 uv python install 3.12
 uv run --python 3.12 python -c "import sys; print(sys.version_info[:2])"
@@ -204,7 +182,6 @@ uv run --python 3.12 python -c "import sys; print(sys.version_info[:2])"
 ```
 
 ### Pin a version for a project
-
 ```bash
 mkdir demo-project
 cd demo-project
@@ -216,36 +193,31 @@ cat .python-version
 3.12
 ```
 
+---
 ## Deeper behavior
 
-### Why PATH order matters
-
+### Why `PATH` order matters
 If three Pythons are installed, the first one found on `PATH` wins. When you activate a virtual environment (Chapter 0.5), its folder is placed at the front of `PATH` for that terminal session, which is why `python` suddenly means "the environment's Python."
 
 ### Why you should never modify the system Python
-
 On macOS and Linux, parts of the operating system run on the system Python. Installing or upgrading packages into it can break those tools. Modern Linux distributions enforce this with a rule from PEP 668. If you try `pip install something` against the system Python, you see:
 
 ```text
 error: externally-managed-environment
 ```
-
 That message is protecting you. The correct fix is a virtual environment, not forcing the install.
 
 ### Python versions and the release cycle
-
 Python releases a new feature version every year in October. Each version receives bug fixes for a couple of years and security fixes for about five years in total. Projects usually declare a **minimum** supported version, which is why this roadmap says 3.12 or newer. Newer syntax, such as the `type` statement and generic function syntax like `def f[T](x: T)`, requires 3.12.
 
 ### What the `py` command is on Windows
-
 The `py` command (from the install manager or the older launcher) is not Python itself. It finds installed Pythons and starts the right one. It also reads the first line of a script (the "shebang") to choose a version, mirroring behavior on Linux and macOS.
 
 ### Why open a new terminal after installing
-
 Each terminal copies `PATH` when it starts. Changes made afterwards are invisible to it. Close and reopen the terminal after installing Python or `uv`.
 
+---
 ## Industry-level snippet
-
 Teams often add a check script that runs on a new developer's laptop and in CI to confirm the machine meets the project's requirements. This one verifies the version, the presence of key standard library modules, and whether `uv` is available. It reports problems clearly and returns a proper exit code.
 
 ```python
@@ -330,14 +302,12 @@ if __name__ == "__main__":
 ```
 
 Things to notice:
-
 - `MINIMUM_VERSION` is a constant written in capitals so it is easy to find and change.
 - `sys.version_info[:2]` is a tuple like `(3, 12)`, and tuples compare naturally, so `(3, 13) >= (3, 12)` is true.
 - Optional and required checks are separated. A missing optional tool does not fail the script.
 - The script prints a report, and the exit code lets automation decide whether to continue.
 
 ## Common mistakes
-
 1. **Skipping "Add python.exe to PATH" with the traditional Windows installer.** Then `python` is not recognized. Re-run the installer and choose Modify, or use the install manager instead.
 2. **Not opening a new terminal after installing.** The old window still has the old `PATH`.
 3. **Using `python` on macOS or Linux and getting an error or an old version.** Use `python3`.
@@ -348,7 +318,6 @@ Things to notice:
 8. **Mixing up `pip` and `python -m pip`.** The first may belong to a different Python than the second. Prefer `python -m pip` (Chapter 0.5).
 
 ## Practice exercises
-
 1. Install Python 3.12 or newer on your machine, then print its exact version from the terminal.
 2. Find the full path to the interpreter your terminal uses when you type `python` (Windows) or `python3` (macOS and Linux).
 3. Explain in your own words what `PATH` is, then print your own `PATH` entries one per line using a command or one-line Python expression.
@@ -361,7 +330,6 @@ Things to notice:
 10. Deliberately try a command that Python is not installed for (for example `python3.99 --version`). Read the error and explain which part of the shell produced it.
 
 ## Summary
-
 - Installing Python adds the interpreter, the standard library, and tools like `pip` and `venv`.
 - The shell finds programs through `PATH`. Wrong `PATH` means "command not found."
 - On Windows use the Python install manager or the traditional installer with the PATH box ticked. On macOS use python.org or Homebrew. On Linux use `apt` or `dnf` and add `python3-venv` on Debian-family systems.
@@ -369,3 +337,5 @@ Things to notice:
 - Verify every install with `--version` and find the interpreter path with `which`, `Get-Command`, or `sys.executable`.
 - Never alter the operating system's Python. Use virtual environments instead.
 - `uv` installs and switches Python versions quickly, and `uv python pin` records a project's version.
+
+---

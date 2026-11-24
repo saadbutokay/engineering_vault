@@ -1,5 +1,4 @@
 ## Overview
-
 Code is read far more often than it is written. You will read your own code months later, teammates will read it during review, and future students will read it while learning. Consistent style makes code easier to scan, easier to debug, and less likely to hide mistakes.
 
 Python has an official style guide called **PEP 8** and a short statement of philosophy called **PEP 20**, the Zen of Python. A PEP is a Python Enhancement Proposal, a numbered design document. Learning these early means you form good habits instead of unlearning bad ones.
@@ -14,9 +13,11 @@ By the end of this note you will be able to:
 > [!note] Style versus correctness
 > Style does not change what your program does. It changes how easily humans understand it. Later you will meet tools (Chapter 0.9) that apply most of these rules automatically, but you still need to know what they enforce and why.
 
+---
 ## Core concepts
-
+Python code style prioritizes readability, explicitness, and consistency across projects, anchored by the official [PEP 8 Style Guide](https://peps.python.org/pep-0008/).
 ### PEP 8 in one page
+**PEP 8** is Python's official style guide, providing coding conventions to make Python code readable, consistent, and maintainable. Originally written in 2001 by Guido van Rossum, Barry Warsaw, and Alyssa Coghlan, it focuses on human readability because code is read far more often than it is written. You can read the full specification on [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/).
 
 | Topic | Convention |
 | --- | --- |
@@ -44,7 +45,6 @@ By the end of this note you will be able to:
 | Exception class | `PascalCase` ending in `Error` | `PaymentError` |
 
 Names to avoid:
-
 - A single lowercase `l`, uppercase `O`, or uppercase `I` as variable names, because they look like digits.
 - Names that shadow built-ins, such as `list`, `dict`, `str`, `id`, `type`, `input`, `sum`.
 - Cryptic abbreviations such as `usr_cnt_tmp2`.
@@ -61,21 +61,17 @@ Good names describe **what a value is** or **what a function does**:
 Boolean variables and functions usually read like a question: `is_valid`, `has_permission`, `can_retry`.
 
 ### Comments
-
 - Explain **why**, not what. The code already shows what it does.
 - Keep comments up to date. A wrong comment is worse than none.
 - Use full sentences for block comments, and two spaces before an inline `#`.
 
 ### Docstrings
-
 A **docstring** is a string placed as the first statement inside a module, function, or class. It documents what the thing does. Tools and editors display it when you hover or call `help()`. Use triple double quotes.
 
 Two popular formats exist. Pick one per project.
 
 ### PEP 20: The Zen of Python
-
 Run this in a terminal and read what appears:
-
 ```bash
 python -c "import this"
 ```
@@ -95,9 +91,7 @@ The core ideas, in plain words:
 ## Basic syntax examples
 
 ### Bad style versus good style
-
 Bad:
-
 ```python
 MAXVAL=100
 def Calc(a,b):
@@ -109,7 +103,6 @@ def Calc(a,b):
 ```
 
 Good:
-
 ```python
 MAX_VALUE = 100
 
@@ -122,9 +115,7 @@ def exceeds_ten(first: int, second: int) -> bool:
 What changed: the constant is in `UPPER_SNAKE_CASE` with spaces around `=`, two blank lines separate top-level definitions, the function has a descriptive snake_case name, operators have spaces around them, the stray space before the colon is gone, and the redundant `if/else` is replaced by returning the comparison directly.
 
 ### Line length and wrapping
-
 Break long expressions inside brackets, not with backslashes:
-
 ```python
 total_price = (
     base_price
@@ -139,11 +130,9 @@ result = send_invoice(
     currency="EUR",
 )
 ```
-
 A trailing comma after the last item makes future changes cleaner in version control.
 
 ### Import grouping
-
 ```python
 import json
 import logging
@@ -157,7 +146,6 @@ from billing.models import Invoice
 Standard library first, third-party second, your own code third, separated by blank lines.
 
 ### Comments: weak and strong
-
 ```python
 # Weak: repeats the code
 count = count + 1  # add one to count
@@ -167,8 +155,7 @@ count = count + 1  # add one to count
 page_number = index + 1
 ```
 
-### Google-style docstring
-
+### Google-style `docstring`
 ```python
 def apply_discount(price: float, percent: float) -> float:
     """Return the price after subtracting a percentage discount.
@@ -188,8 +175,7 @@ def apply_discount(price: float, percent: float) -> float:
     return price * (1 - percent / 100)
 ```
 
-### NumPy-style docstring
-
+### NumPy-style `docstring`
 ```python
 def apply_discount(price: float, percent: float) -> float:
     """Return the price after subtracting a percentage discount.
@@ -225,7 +211,6 @@ def apply_discount(price: float, percent: float) -> float:
 This roadmap prefers Google style for application code.
 
 ### A short docstring is fine for simple things
-
 ```python
 def is_adult(age: int) -> bool:
     """Return True if age is 18 or older."""
@@ -235,19 +220,15 @@ def is_adult(age: int) -> bool:
 ## Deeper behavior
 
 ### Why indentation is syntax in Python
-
 Other languages use braces to mark blocks. Python uses indentation. Mixing tabs and spaces can produce errors or, worse, code that looks right but behaves differently. Configure your editor to insert 4 spaces when you press Tab.
 
 ### Line length is a trade-off
-
 Short lines fit side-by-side diffs and split-screen editing, and they discourage deeply nested logic. Overly strict limits force awkward breaks. Pick a number, put it in your tool configuration, and stop debating. The industry-level example below assumes 88.
 
 ### Consistency beats personal preference
-
 PEP 8 itself says that consistency within a project is more important than strict conformance to the guide. When joining an existing codebase, follow its conventions even if you would choose otherwise.
 
 ### Magic numbers and constants
-
 A number or string with unexplained meaning in the middle of code is a **magic value**. Give it a name:
 
 ```python
@@ -262,27 +243,21 @@ if retries > MAX_RETRIES:
 ```
 
 ### Naming and scope
-
 A short name is acceptable for a tiny scope, such as `i` in a three-line loop. The larger the scope, the more descriptive the name should be.
 
 ### Private by convention
-
 A leading underscore, such as `_cache`, signals "internal, do not rely on this from outside." Python does not enforce it, it is a courtesy to other developers. Chapter 6.9 covers this properly.
 
 ### Comments rot, code names do not lie as easily
-
 If you feel the need to write a long comment explaining a confusing block, first try to rename things or split the block into a function with a good name. Keep comments for context that code cannot express, such as business rules, workarounds, and links to design decisions.
 
 ### Type hints are part of modern style
-
 Annotations such as `price: float` and `-> bool` document intent and enable tools like mypy. Phase 8 teaches them fully, and this note already uses them in examples.
 
 ### Tools enforce style so humans do not have to
-
 Formatters and linters fix spacing and flag naming problems automatically. Code reviews should focus on design and correctness, not on arguing about whitespace.
 
 ## Industry-level snippet
-
 This module follows PEP 8, uses Google-style docstrings, type hints, constants, logging, input validation, and specific error handling. It calculates an invoice total for a billing service. It uses `Decimal`, which handles money exactly (Chapter 1.3 explains why).
 
 ```python
@@ -364,7 +339,6 @@ def calculate_total(
 ```
 
 Try it:
-
 ```python
 from decimal import Decimal
 
@@ -376,7 +350,6 @@ print(calculate_total(items, discount_percent=Decimal("10"), tax_rate=Decimal("0
 ```
 
 Style points to notice:
-
 - Module docstring first, then imports in alphabetical order, then constants, then classes and functions.
 - Constants in capitals, classes in PascalCase, functions in snake_case, a private helper with a leading underscore.
 - Every public function has a docstring explaining arguments, return value, and errors.
@@ -385,7 +358,6 @@ Style points to notice:
 - Nothing is hidden in the middle of the code: limits live in named constants.
 
 ## Common mistakes
-
 1. **Mixing tabs and spaces.** Configure your editor to use 4 spaces.
 2. **Naming variables after built-ins.** `list = [1, 2]` makes the real `list` unavailable in that scope.
 3. **Using one-letter names everywhere.** Only tiny scopes justify them.
@@ -398,7 +370,6 @@ Style points to notice:
 10. **Believing style tools replace thinking.** They fix formatting, not design.
 
 ## Practice exercises
-
 1. Reformat the "bad style" example from this note by hand, then explain each change you made.
 2. Rename each of these to follow conventions: a variable `UserAge`, a function `CalculateTotal`, a constant `maxretries`, and a class `invoice_service`.
 3. Write three weak names from your own past code or ideas and replace them with names that describe meaning.
@@ -411,7 +382,6 @@ Style points to notice:
 10. Extend the invoice module with a function `format_total` that returns a string like `EUR 123.45`. Follow all conventions in this note, include type hints and a docstring, and reject unsupported currency codes with a clear error.
 
 ## Summary
-
 - PEP 8 is the official style guide. Use 4-space indentation, clear spacing, grouped imports, and consistent line length.
 - Names follow conventions: `snake_case` for variables, functions, and modules, `PascalCase` for classes, `UPPER_SNAKE_CASE` for constants.
 - Good names describe meaning. Avoid single letters beyond tiny scopes and avoid shadowing built-ins.
@@ -419,3 +389,5 @@ Style points to notice:
 - PEP 20 reminds you that readability counts and that simple, explicit code is better than clever code.
 - Consistency within a project matters more than personal taste.
 - Tools can enforce formatting, but understanding the reasons makes you a better reviewer and teammate.
+
+---

@@ -12,6 +12,7 @@
 3. [[Running Python Code]] - The REPL, running a `.py` file, `python -m`, command-line arguments, exiting, difference between `python` and `python3`.
 
 4. [[Code Editor Setup]] - Visual Studio Code, the Python extension, selecting an interpreter, running and debugging from the editor, integrated terminal.
+
 5. [[Virtual Environments and Packages]] - Why isolation matters, `venv`, activation on each OS, `pip install`, `pip freeze`, `requirements.txt`, `uv venv` and `uv pip`.
 
 6. [[Project Layout and Configuration]] - `src/` layout, `tests/` folder, `pyproject.toml` basics, `.gitignore`, `.env` files and why secrets never go into code.

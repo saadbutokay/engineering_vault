@@ -1,9 +1,7 @@
 ## Overview
-
 Python gives you several ways to run code, and each one fits a different purpose. You will use the interactive REPL to experiment, script files to build real programs, and `python -m` to run tools that ship with Python or with packages. You will also learn how to pass information into a program from the command line and how a program tells the shell whether it succeeded.
 
 By the end of this note you will be able to:
-
 - Start and exit the Python REPL on any operating system.
 - Write a `.py` file and run it from the terminal.
 - Run a one-liner with `-c` and a module with `-m`.
@@ -13,14 +11,13 @@ By the end of this note you will be able to:
 > [!note] Command names in this note
 > Examples use `python`. On macOS and Linux, type `python3` instead unless you are inside an activated virtual environment (Chapter 0.5), where `python` works everywhere.
 
+---
 ## Core concepts
 
 ### The REPL
-
 **REPL** stands for Read, Eval, Print, Loop. You type one piece of code, Python reads it, evaluates it, prints the result, and waits for the next. It is the fastest way to test an idea.
 
 Start it by typing `python` with no arguments. You will see a prompt of three greater-than signs:
-
 ```text
 Python 3.13.5 (main, ...) on linux
 Type "help", "copyright", "credits" or "license" for more information.
@@ -28,7 +25,6 @@ Type "help", "copyright", "credits" or "license" for more information.
 ```
 
 ### Script files
-
 A **script** is a text file ending in `.py` that contains Python code. Running it executes the code from top to bottom and then the process ends. Scripts are what you will write for real work, because they can be saved, edited, versioned, and shared.
 
 ### The four ways to start Python
@@ -41,7 +37,6 @@ A **script** is a text file ending in `.py` that contains Python code. Running i
 | `python -m module` | Run a module by name | Tools such as `venv`, `pip`, `http.server` |
 
 ### Command-line arguments
-
 Anything you type after the script name is passed to the program as a list of text values. Inside Python this list is `sys.argv`. Item 0 is the script name, item 1 is the first argument, and so on. Every value arrives as text, even if it looks like a number.
 
 ### Exiting
@@ -64,7 +59,6 @@ Anything you type after the script name is passed to the program as a list of te
 ## Basic syntax examples
 
 ### Using the REPL
-
 ```text
 >>> 2 + 3
 5
@@ -79,7 +73,6 @@ Anything you type after the script name is passed to the program as a list of te
 Notice that the REPL prints the value of an expression automatically. A script does not, so inside a script you must call `print()` to see output.
 
 Useful REPL helpers:
-
 ```text
 >>> help(len)       # read documentation
 >>> dir(str)        # list what a string can do
@@ -90,16 +83,13 @@ Useful REPL helpers:
 > Python 3.13 and newer ship an improved interactive shell with colors, multi-line editing, and a paste mode (press F3). If your REPL looks plainer, you are on an older version.
 
 ### Writing and running a script
-
 Create a file named `hello.py` in a folder you can find again:
-
 ```python
 print("Hello from a script")
 print(2 + 3)
 ```
 
 Run it from the same folder:
-
 ```bash
 python hello.py
 ```
@@ -110,22 +100,18 @@ Hello from a script
 ```
 
 If the file is somewhere else, give a path:
-
 ```bash
 python projects/hello.py
 ```
 
 ### One-liners with -c
-
 ```bash
 python -c "print(10 * 7)"
 python -c "import sys; print(sys.version_info[:2])"
 ```
-
 On Windows PowerShell and on macOS and Linux, wrapping the code in double quotes works. If the code itself contains double quotes, use single quotes inside it.
 
 ### Running modules with -m
-
 ```bash
 python -m pip --version
 python -m venv .venv
@@ -133,13 +119,10 @@ python -m http.server 8000
 python -m json.tool data.json
 python -m timeit "sum(range(1000))"
 ```
-
 Each one runs a program that is part of Python or an installed package. `http.server` starts a small web server for the current folder. Press Ctrl and C to stop it.
 
 ### Command-line arguments
-
 Create `greet.py`:
-
 ```python
 import sys
 
@@ -151,7 +134,6 @@ print(f"Hello, {name}!")
 ```
 
 Run it:
-
 ```bash
 python greet.py Ada
 ```
@@ -163,7 +145,6 @@ Hello, Ada!
 ```
 
 Now run it without an argument and read the error:
-
 ```bash
 python greet.py
 ```
@@ -175,31 +156,24 @@ Traceback (most recent call last):
            ~~~~~~~~^^^
 IndexError: list index out of range
 ```
-
 That error is correct: there is no item at position 1 because you passed nothing. The industry snippet below shows how to handle this properly.
 
 ### Running a script and then staying in the REPL
-
 ```bash
 python -i hello.py
 ```
-
 The `-i` flag runs the file and then drops you into the REPL with all its variables still available. This is excellent for inspecting results.
 
 ## Deeper behavior
 
 ### Why `python -m pip` is better than `pip`
-
 When you type `pip`, the shell runs whichever `pip` program comes first on `PATH`, which may belong to a different Python than the one you think. Writing `python -m pip` runs pip as a module of exactly the interpreter you named. The same reasoning applies to `python -m venv` and `python -m pytest`.
 
 ### What `-m` does differently from a file path
-
 `python script.py` runs a file. `python -m package.module` finds a module using Python's import system, then runs it. It also adds your current folder to the module search path. This matters for projects with packages, where running files directly breaks imports.
 
 ### The `__name__ == "__main__"` guard
-
 Python sets a special variable `__name__` for every file. When a file is run directly, `__name__` equals `"__main__"`. When another file imports it, `__name__` is the module's name instead. This lets one file serve as both a script and a reusable module:
-
 ```python
 def main() -> None:
     print("running as a program")
@@ -212,7 +186,6 @@ if __name__ == "__main__":
 The code inside the `if` only executes when you run the file, not when someone imports it. Chapter 4.1 covers this in depth.
 
 ### Exit codes from scripts
-
 A script finishes with exit code `0` by default. You can choose another code:
 
 ```python
@@ -220,13 +193,10 @@ import sys
 
 sys.exit(2)
 ```
-
 If your script crashes with an unhandled exception, Python exits with code `1`. Automation tools read these numbers to decide what to do next.
 
 ### Shebang lines on macOS and Linux
-
 The first line of a script can name the interpreter:
-
 ```python
 #!/usr/bin/env python3
 print("I can be run directly")
@@ -235,15 +205,12 @@ print("I can be run directly")
 After running `chmod +x script.py`, you can start it with `./script.py`. This does not work the same way on Windows, where the `py` launcher reads the line to pick a version.
 
 ### Working directory again
-
 Running `python projects/hello.py` from your home folder sets the working directory to your home folder, not to `projects`. Any relative file path inside the script is resolved from where you typed the command.
 
 ### Interpreter output buffering
-
 When Python's output is sent to a file or a pipe instead of a terminal, it is buffered, meaning it may appear later than expected. Use `python -u script.py` or `print(..., flush=True)` when you need output immediately, such as in logs of long-running services.
 
 ## Industry-level snippet
-
 A backend team keeps small command-line tools for operations: checking a service, clearing a cache, rotating logs. Here is a realistic health checker that reads its arguments from `sys.argv`, validates them, handles network errors, logs what it does, and returns exit codes that a deployment system can act on. It uses only the standard library.
 
 ```python
@@ -324,7 +291,6 @@ if __name__ == "__main__":
 ```
 
 Try it:
-
 ```bash
 python healthcheck.py https://example.com 3
 echo $?
@@ -333,7 +299,6 @@ echo $?
 ```
 
 Notice the structure, because you will see it in nearly all professional scripts:
-
 - A docstring at the top documents usage and exit codes.
 - Constants hold values that would otherwise be "magic numbers."
 - Small functions do one job each, so they are easy to test.
@@ -342,7 +307,6 @@ Notice the structure, because you will see it in nearly all professional scripts
 - `sys.exit(main(sys.argv))` converts the returned number into the shell's exit code.
 
 ## Common mistakes
-
 1. **Running `python` inside the REPL.** Typing `python hello.py` at the `>>>` prompt causes a `SyntaxError`. Exit the REPL first, then run the file at the shell prompt.
 2. **Typing shell commands in the REPL, or Python code in the shell.** The prompt tells you where you are: `>>>` is Python, anything else is the shell.
 3. **Running a script from the wrong folder.** `python: can't open file ... No such file or directory` means the path is wrong relative to your working directory.
@@ -354,7 +318,6 @@ Notice the structure, because you will see it in nearly all professional scripts
 9. **Using curly quotes copied from a document.** Python only accepts straight quotes `"` and `'`.
 
 ## Practice exercises
-
 1. Start the REPL. Calculate `17 * 23`, then use `_` to add 1 to the previous result. Exit correctly.
 2. In the REPL, use `help` to read the documentation for `round`, and `dir` to list what a string can do.
 3. Create `hello.py` that prints your name and today's weekday as text you type yourself. Run it from two different folders using a relative path in one case and an absolute path in the other.
@@ -367,7 +330,6 @@ Notice the structure, because you will see it in nearly all professional scripts
 10. Modify the health checker so that a third argument selects how many times to retry before giving up, and log each attempt.
 
 ## Summary
-
 - The REPL (`python`) is for experiments, script files are for real programs, `-c` runs one-liners, and `-m` runs modules.
 - Exit the REPL with `exit()` or Ctrl and D (macOS, Linux) or Ctrl and Z then Enter (Windows). Stop a running script with Ctrl and C.
 - `sys.argv` is the list of text arguments, with the script name at index 0.
@@ -375,3 +337,5 @@ Notice the structure, because you will see it in nearly all professional scripts
 - Prefer `python -m pip` over bare `pip` so the right interpreter is used.
 - The `__name__ == "__main__"` guard separates "run as a program" from "imported as a module."
 - Programs signal success or failure with exit codes, where 0 means success.
+
+---

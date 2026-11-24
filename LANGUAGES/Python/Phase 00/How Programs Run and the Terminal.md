@@ -1,9 +1,7 @@
 ## Overview
-
 Before writing any Python, you need a mental picture of what happens when a program runs and a place to run it from. That place is the terminal. Almost every professional Python workflow (installing packages, running scripts, using Git, deploying to a server) happens there, so this chapter is the foundation for everything else.
 
 By the end of this note you will be able to:
-
 - Explain what a program is and how a computer runs it.
 - Explain the difference between a compiler and an interpreter.
 - Tell the difference between a terminal and a shell.
@@ -14,27 +12,23 @@ By the end of this note you will be able to:
 > The terminal looks scary because it has no buttons. It is simply a text conversation: you type a command, the computer answers. Nothing you type in the first half of this note can damage your computer, as long as you follow the warnings about deleting.
 
 ## Core concepts
-
-### What a program is
-
 A **program** is a list of instructions stored in a file. A **process** is that program while it is actually running in memory. You can have one program and several processes of it at once, for example three browser windows each running the same browser program.
 
 Your processor (the CPU) only understands **machine code**, which is long sequences of numbers. Humans write **source code** in a language like Python, and something has to translate it into machine instructions.
 
-### Compiler versus interpreter
+### Compiler versus Interpreter
 
-| Idea | Compiler | Interpreter |
-| --- | --- | --- |
-| When translation happens | Once, before the program runs | While the program runs |
-| What you get | A separate executable file | Nothing extra, the interpreter reads your source |
-| Typical languages | C, C++, Go, Rust | Python, Ruby, JavaScript |
-| Speed | Usually faster at run time | Usually slower at run time |
-| Feedback while learning | Must build before each test | Run immediately, see errors immediately |
+| Idea                     | Compiler                      | Interpreter                                      |
+| ------------------------ | ----------------------------- | ------------------------------------------------ |
+| When translation happens | Once, before the program runs | While the program runs                           |
+| What you get             | A separate executable file    | Nothing extra, the interpreter reads your source |
+| Typical languages        | C, C++, Go, Rust              | Python, Ruby, JavaScript                         |
+| Speed                    | Usually faster at run time    | Usually slower at run time                       |
+| Feedback while learning  | Must build before each test   | Run immediately, see errors immediately          |
 
 Python is called an interpreted language. The truth is slightly more subtle (see Deeper behavior), but for now think of it as: you give Python a file, and the Python interpreter reads and carries out your instructions.
 
-### Terminal, shell, and prompt
-
+### `Terminal`, `shell` and `prompt`
 These three words are often mixed up.
 
 | Term | Meaning |
@@ -44,7 +38,6 @@ These three words are often mixed up.
 | Prompt | The text the shell prints to say it is ready, such as `PS C:\Users\learner>` or `learner@laptop ~ %` |
 
 Different operating systems use different default shells:
-
 - Windows: PowerShell
 - macOS: zsh
 - Linux: usually bash
@@ -52,13 +45,11 @@ Different operating systems use different default shells:
 This roadmap gives commands for all three. zsh and bash behave almost identically for everything in Phase 0, so one set of commands covers both.
 
 ### How to open a terminal
-
 - Windows: press the Windows key, type `Terminal` or `PowerShell`, press Enter.
 - macOS: press Command and Space, type `Terminal`, press Enter.
 - Linux: press Ctrl, Alt, and T on most distributions, or search for Terminal in the applications menu.
 
-### Files, folders, and paths
-
+### `files`, `folders`, and `paths`
 Your files live in a tree of folders. A **path** is the address of a file or folder in that tree.
 
 - An **absolute path** starts from the very top of the tree and works from anywhere. Example: `C:\Users\learner\projects` on Windows, `/home/learner/projects` on Linux, `/Users/learner/projects` on macOS.
@@ -100,7 +91,6 @@ Separators differ: Windows uses a backslash `\`, while macOS and Linux use a for
 ## Basic syntax examples
 
 ### Windows (PowerShell)
-
 ```powershell
 pwd
 cd ~
@@ -115,11 +105,9 @@ cd ..
 cd ..
 Remove-Item -Recurse python-roadmap
 ```
-
 What each line does, in order: show where you are, jump to your home folder, create a folder, enter it, create a subfolder, create an empty file, list the contents, enter the subfolder, confirm the new location, go up twice, then delete the practice folder and everything inside it.
 
 ### macOS and Linux (zsh or bash)
-
 ```bash
 pwd
 cd ~
@@ -135,15 +123,12 @@ rm -r python-roadmap
 ```
 
 Example of what `pwd` prints after `cd notes`:
-
 ```text
 /home/learner/python-roadmap/notes
 ```
 
 ### Absolute versus relative, side by side
-
 Assume you are in your home folder and want to enter `python-roadmap/notes`.
-
 ```bash
 # Relative path: starts from where you are now
 cd python-roadmap/notes
@@ -153,15 +138,12 @@ cd /home/learner/python-roadmap/notes
 ```
 
 ### Quoting paths that contain spaces
-
 ```bash
 cd "My Documents/python notes"
 ```
-
 Without the quotes, the shell sees three separate words and fails.
 
 ### Tips that save hours
-
 - Press Tab to auto-complete file and folder names.
 - Press the Up arrow to bring back previous commands.
 - Press Ctrl and C to stop a command that is stuck or running too long.
@@ -170,21 +152,16 @@ Without the quotes, the shell sees three separate words and fails.
 ## Deeper behavior
 
 ### Python is compiled and interpreted
-
 When you run a `.py` file, Python first compiles your source into **bytecode**, a compact set of instructions for Python's own virtual machine. Then the interpreter (the Python virtual machine) executes that bytecode. You may notice a `__pycache__` folder appear next to your code. It stores the compiled bytecode so later runs can start faster. Phase 1 returns to this in detail.
 
 ### The working directory matters
-
 Every process has a **current working directory**. When your Python script opens a file called `data.csv`, it looks relative to the working directory of the terminal where you launched it, not relative to where the script file is saved. A large share of "file not found" errors in beginner projects come from this single fact.
 
 ### Where does the shell find commands?
-
 When you type `python`, the shell does not search your whole disk. It looks through a list of folders stored in an environment variable called `PATH`, in order, until it finds a program with that name. Installing Python correctly (next chapter) is largely about making sure Python is on this list.
 
 ### Exit codes
-
 Every program, when it finishes, hands back a number called an **exit code** (or exit status). By convention, `0` means success and any other number means some kind of failure. Scripts, build tools, and deployment pipelines rely on this to decide whether to continue.
-
 ```bash
 ls /this/folder/does/not/exist
 echo $?
@@ -195,13 +172,10 @@ Get-Item C:\this\folder\does\not\exist
 $LASTEXITCODE
 $?
 ```
-
 In bash and zsh, `$?` holds the last exit code. In PowerShell, `$LASTEXITCODE` holds the exit code of the last external program and `$?` is True or False for the last command.
 
 ### Standard streams, redirection, and pipes
-
 Every process has three channels: standard input (`stdin`), standard output (`stdout`), and standard error (`stderr`). The shell can redirect them.
-
 ```bash
 ls > files.txt          # send output into a file (overwrite)
 ls >> files.txt         # append instead of overwrite
@@ -209,11 +183,9 @@ ls | sort               # send output of ls into sort
 ```
 
 ### Case sensitivity
-
 Linux treats `Notes.txt` and `notes.txt` as different files. Windows and (by default) macOS treat them as the same. Code written on a case-insensitive system can break on a Linux server, so always match capitalization exactly.
 
 ## Industry-level snippet
-
 Backend engineers regularly write small diagnostic scripts to answer "where is this program running and in what conditions?" This one reports on the environment, validates that a directory is writable, and uses exit codes properly. You do not need to understand every line yet, read the comments and run it to see the output.
 
 ```python
@@ -293,13 +265,11 @@ if __name__ == "__main__":
 Save it as `env_report.py`, then run it from the terminal with `python env_report.py` (Windows) or `python3 env_report.py` (macOS and Linux). Afterwards check its exit code with `echo $?` or `$LASTEXITCODE`.
 
 What to notice:
-
 - `Path` objects represent file paths in a way that works on every operating system.
 - `os.pathsep` is `;` on Windows and `:` on macOS and Linux, which is why the code does not hard-code either one.
 - `main()` returns a number instead of calling `exit` in the middle, and `sys.exit(main())` hands that number to the shell as the exit code.
 
 ## Common mistakes
-
 1. **Running a command in the wrong folder.** Always check with `pwd` before creating, running, or deleting anything.
 2. **Forgetting quotes around paths with spaces.** `cd My Documents` fails, `cd "My Documents"` works.
 3. **Copying the prompt symbol.** Pasting `$ ls` or `PS C:\> ls` includes characters that are not part of the command.
@@ -310,7 +280,6 @@ What to notice:
 8. **Closing the terminal to stop a program.** Press Ctrl and C first. Closing the window can leave processes behind.
 
 ## Practice exercises
-
 1. Open your terminal. Write down which shell you are using and how you found out.
 2. Print your working directory. Then navigate to your home folder using a command that works from any location.
 3. List all files in your home folder, including hidden ones. Identify two hidden items and guess what they might be for.
@@ -323,7 +292,6 @@ What to notice:
 10. Modify the industry-level snippet so it also reports the number of files in the working directory. Handle the case where the directory cannot be read.
 
 ## Summary
-
 - A program is stored instructions, a process is a running program, and the CPU only understands machine code.
 - A compiler translates before running, an interpreter translates while running. Python compiles to bytecode and then interprets it.
 - The terminal is the window, the shell is the program that understands your commands, and the prompt shows it is ready.
